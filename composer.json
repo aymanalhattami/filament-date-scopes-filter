@@ -8,7 +8,7 @@
         "date scopes filter",
         "date filter"
     ],
-    "homepage": "https://github.com/aymanalhattami/filament-date-scops-filter",
+    "homepage": "https://github.com/aymanalhattami/filament-date-scopes-filter",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -20,7 +20,8 @@
     ],
     "require": {
         "php": "^8.1",
-        "filament/filament": "^3.0",
+        "filament/tables": "^3.0",
+        "filament/forms": "^3.0",
         "spatie/laravel-package-tools": "^1.12"
     },
     "require-dev": {
