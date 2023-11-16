@@ -1,0 +1,65 @@
+{
+    "name": "aymanalhattami/filament-approval",
+    "description": "Filament Approval",
+    "keywords": [
+        "aymanalhattami",
+        "filament-approval",
+        "filament",
+        "Approval"
+    ],
+    "homepage": "https://github.com/aymanalhattami/filament-approval",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ayman Alhattami",
+            "email": "ayman.m.alhattami@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "filament/filament": "^3.0",
+        "spatie/laravel-package-tools": "^1.12",
+        "aymanalhattami/laravel-approval": "dev-with-relations",
+        "aymanalhattami/filament-page-with-sidebar": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AymanAlhattami\\FilamentApproval\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AymanAlhattami\\FilamentApproval\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AymanAlhattami\\FilamentApproval\\FilamentApprovalServiceProvider"
+            ],
+            "aliases": {
+                "FilamentApproval": "AymanAlhattami\\FilamentApproval\\FilamentApprovalFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../laravel-approval"
+        }
+    ],
+    "require-dev": {
+        "laravel/pint": "dev-main"
+    }
+}
