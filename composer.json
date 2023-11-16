@@ -1,13 +1,14 @@
 {
-    "name": "aymanalhattami/filament-approval",
-    "description": "Filament Approval",
+    "name": "aymanalhattami/filament-date-scops-filter",
+    "description": "Filament Date Scopes Filter",
     "keywords": [
         "aymanalhattami",
-        "filament-approval",
+        "filament-date-scopes-filter",
         "filament",
-        "Approval"
+        "date scopes filter",
+        "date filter"
     ],
-    "homepage": "https://github.com/aymanalhattami/filament-approval",
+    "homepage": "https://github.com/aymanalhattami/filament-date-scops-filter",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -20,18 +21,19 @@
     "require": {
         "php": "^8.1",
         "filament/filament": "^3.0",
-        "spatie/laravel-package-tools": "^1.12",
-        "aymanalhattami/laravel-approval": "dev-with-relations",
-        "aymanalhattami/filament-page-with-sidebar": "^2.0"
+        "spatie/laravel-package-tools": "^1.12"
+    },
+    "require-dev": {
+        "laravel/pint": "dev-main"
     },
     "autoload": {
         "psr-4": {
-            "AymanAlhattami\\FilamentApproval\\": "src"
+            "AymanAlhattami\\FilamentDateScopesFilter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AymanAlhattami\\FilamentApproval\\Tests\\": "tests"
+            "AymanAlhattami\\FilamentDateScopesFilter\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,21 +47,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AymanAlhattami\\FilamentApproval\\FilamentApprovalServiceProvider"
-            ],
-            "aliases": {
-                "FilamentApproval": "AymanAlhattami\\FilamentApproval\\FilamentApprovalFacade"
-            }
+                "FilamentDateScopesFilterServiceProvider"
+            ]
         }
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../laravel-approval"
-        }
-    ],
-    "require-dev": {
-        "laravel/pint": "dev-main"
-    }
+    "minimum-stability": "dev"
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AymanAlhattami\FilamentApproval;
+namespace AymanAlhattami\FilamentDateScopesFilter;
 
 use AymanAlhattami\FilamentApproval\Filament\Pages\ListModificationRelationMedia;
 use AymanAlhattami\FilamentApproval\Filament\Resources\ApprovalResource;
@@ -9,24 +9,16 @@ use AymanAlhattami\FilamentApproval\Filament\Resources\ModificationResource;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class FilamentApprovalPlugin implements Plugin
+class FilamentDateScopesFilterPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'filament-approval';
+        return 'filament-date-scopes-filter';
     }
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->resources([
-                ModificationResource::class,
-                ApprovalResource::class,
-                DisapprovalResource::class
-            ])
-            ->pages([
-                ListModificationRelationMedia::class,
-            ]);
+
     }
 
     public function boot(Panel $panel): void
