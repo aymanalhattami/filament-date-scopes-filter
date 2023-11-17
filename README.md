@@ -1,8 +1,7 @@
 # Filament Date Scopes Filter
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/aymanalhattami/filament-approval.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-approval)
-[![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-approval.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-approval)
-![GitHub Actions](https://github.com/aymanalhattami/filament-approval/actions/workflows/main.yml/badge.svg)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/aymanalhattami/filament-approval.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-date-scopes-filter)
+[![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-date-scopes-filter.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-date-scopes-filter)
 
 Provide a filter by seconds, minutes, hours, days, weeks, months, quarter, years, decades and millenniums for table. 
 
