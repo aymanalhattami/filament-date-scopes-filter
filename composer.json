@@ -20,8 +20,9 @@
     ],
     "require": {
         "php": "^8.1",
-        "filament/tables": "^3.0",
         "filament/forms": "^3.0",
+        "filament/tables": "^3.0",
+        "laracraft-tech/laravel-date-scopes": "dev-main",
         "spatie/laravel-package-tools": "^1.12"
     },
     "require-dev": {

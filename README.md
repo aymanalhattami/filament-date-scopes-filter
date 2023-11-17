@@ -1,4 +1,4 @@
-# Very short description of the package
+# Filament Date Scopes Filter
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/aymanalhattami/filament-approval.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-approval)
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-approval.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-approval)
