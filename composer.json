@@ -22,7 +22,7 @@
         "php": "^8.1",
         "filament/forms": "^3.0",
         "filament/tables": "^3.0",
-        "laracraft-tech/laravel-date-scopes": "dev-main",
+        "laracraft-tech/laravel-date-scopes": "^2.0",
         "spatie/laravel-package-tools": "^1.12"
     },
     "require-dev": {
@@ -49,9 +49,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FilamentDateScopesFilterServiceProvider"
+                "AymanAlhattami\\FilamentDateScopesFilter\\FilamentDateScopesFilterServiceProvider"
             ]
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
