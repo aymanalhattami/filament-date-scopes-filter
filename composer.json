@@ -33,11 +33,6 @@
             "AymanAlhattami\\FilamentDateScopesFilter\\": "src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "AymanAlhattami\\FilamentDateScopesFilter\\Tests\\": "tests"
-        }
-    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
