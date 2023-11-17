@@ -4,26 +4,35 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/aymanalhattami/filament-approval.svg?style=flat-square)](https://packagist.org/packages/aymanalhattami/filament-approval)
 ![GitHub Actions](https://github.com/aymanalhattami/filament-approval/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Provide a filter by seconds, minutes, hours, days, weeks, months, quarter, years, decades and millenniums for table. 
 
 ## Installation
+
+At first, this package depends on [laravel date scops](https://github.com/laracraft-tech/laravel-date-scopes). Please read the [laravel date scops](https://github.com/laracraft-tech/laravel-date-scopes) document and prepare your model(s) to be filtered by date scopes.
 
 You can install the package via composer:
 
 ```bash
-composer require aymanalhattami/filament-approval
+composer require aymanalhattami/filament-date-scopes-filter
 ```
 
 ## Usage
 
+
+
 ```php
-// Usage description here
-```
+use AymanAlahttami\FilamentDateScopesFIlter\DateScopeFilter;
 
-### Testing
-
-```bash
-composer test
+// ...
+public static function table(Table $table): Table
+{
+    return $table
+        ->filters([
+            DateScopeFilter::make('created_at'),
+        ]))
+    // ...
+}
+// ...
 ```
 
 ### Changelog
