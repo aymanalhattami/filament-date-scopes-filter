@@ -6,6 +6,8 @@
 
 Provide a filter by seconds, minutes, hours, days, weeks, months, quarter, years, decades and millenniums for table. 
 
+![filament-page-with-sidebar](images/filament-date-scopes-filter.png)
+
 ## Installation
 
 At first, this package depends on [laravel date scops](https://github.com/laracraft-tech/laravel-date-scopes). Please read the [laravel date scops](https://github.com/laracraft-tech/laravel-date-scopes) document and prepare your model(s) to be filtered by date scopes.
