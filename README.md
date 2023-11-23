@@ -5,7 +5,9 @@
 
 Provide a filter by seconds, minutes, hours, days, weeks, months, quarter, years, decades and millenniums for table. 
 
-![filament-page-with-sidebar](https://raw.githubusercontent.com/aymanalhattami/filament-date-scopes-filter/main/images/filament-date-scopes-filter.png){.filament-hidden}
+<div class="filament-hidden">
+![filament-page-with-sidebar](https://raw.githubusercontent.com/aymanalhattami/filament-date-scopes-filter/main/images/filament-date-scopes-filter.png)
+</div>
 
 ## Installation
 
