@@ -145,7 +145,7 @@ class DateScopeFilter extends Filter
         parent::setUp();
 
         $this->form(fn() => [
-            Grid::make(3)->schema([
+            Grid::make($this->getColumns())->schema([
                 Select::make($this->getName())
                     ->options($this->scopes)
                     ->searchable()
