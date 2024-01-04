@@ -22,7 +22,7 @@ composer require aymanalhattami/filament-date-scopes-filter
 
 
 ```php
-use AymanAlahttami\FilamentDateScopesFIlter\DateScopeFilter;
+use AymanAlhattami\FilamentDateScopesFIlter\DateScopeFilter;
 
 // ...
 public static function table(Table $table): Table
