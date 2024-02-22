@@ -30,7 +30,7 @@ public static function table(Table $table): Table
     return $table
         ->filters([
             DateScopeFilter::make('created_at'),
-        ]))
+        ])
     // ...
 }
 // ...
