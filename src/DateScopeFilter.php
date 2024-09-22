@@ -20,7 +20,7 @@ class DateScopeFilter extends Filter
             'ofLast30Seconds' => 'Last 30 Seconds',
             'ofLast45Seconds' => 'Last 45 Seconds',
             'ofLast60Seconds' => 'Last 60 Seconds',
-            'ofLastSeconds' => 'Last Seconds'
+            'ofLastSeconds' => 'Last Seconds',
         ],
         'Minutes' => [
             'ofLastMinute' => 'Last Minute',
@@ -66,23 +66,23 @@ class DateScopeFilter extends Filter
             'ofLast2Quarters' => 'Last 2 Quarters',
             'ofLast3Quarters' => 'Last 3 Quarters',
             'ofLast4Quarters' => 'Last 4 Quarters',
-            'ofLastQuarters' => 'Last Quarters'
+            'ofLastQuarters' => 'Last Quarters',
         ],
         'Years' => [
             'ofLastYear' => 'Last Year',
-            'ofLastYears' => 'Last Years'
+            'ofLastYears' => 'Last Years',
         ],
         'Decades' => [
             'ofLastDecade' => 'Last Decade',
-            'ofLastDecades' => 'Last Decades'
+            'ofLastDecades' => 'Last Decades',
         ],
         'Centuries' => [
             'ofLastCentury' => 'Last Century',
-            'ofLastCenturies' => 'Last Centuries'
+            'ofLastCenturies' => 'Last Centuries',
         ],
         'Millenniums' => [
             'ofLastMillennium' => 'Last Millennium',
-            'ofLastMillenniums' => 'Last Millenniums'
+            'ofLastMillenniums' => 'Last Millenniums',
         ],
         'toNow/toDate' => [
             'secondToNow' => 'Second To Now',
@@ -95,8 +95,8 @@ class DateScopeFilter extends Filter
             'yearToDate' => 'Year To Date',
             'decadeToDate' => 'Decade To Date',
             'centuryToDate' => 'Century To Date',
-            'millenniumToDate' => 'Millennium To Date'
-        ]
+            'millenniumToDate' => 'Millennium To Date',
+        ],
     ];
 
     private array $scopesRequireAdditionalParameters = [
@@ -110,7 +110,7 @@ class DateScopeFilter extends Filter
         'ofLastYears',
         'ofLastDecades',
         'ofLastCenturies',
-        'ofLastMillenniums'
+        'ofLastMillenniums',
     ];
 
     private array $scopesDontSupportRange = [
@@ -144,7 +144,7 @@ class DateScopeFilter extends Filter
     {
         parent::setUp();
 
-        $this->form(fn() => [
+        $this->form(fn () => [
             Grid::make($this->getColumns())->schema([
                 Select::make($this->getName())
                     ->options($this->scopes)
@@ -155,39 +155,39 @@ class DateScopeFilter extends Filter
                         $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
                         $lastWord = end($words);
 
-                        return __('Number of ' . $lastWord);
+                        return __('Number of '.$lastWord);
                     })
                     ->default(2)
                     ->numeric()
                     ->visible(function (Get $get) {
-                        return (bool)in_array($get($this->getName()), $this->scopesRequireAdditionalParameters);
+                        return (bool) in_array($get($this->getName()), $this->scopesRequireAdditionalParameters);
                     }),
                 Select::make('range')
-                    ->options(function(){
+                    ->options(function () {
                         return collect(DateRange::cases())->mapWithKeys(function ($dateRange) {
                             return [$dateRange->value => $dateRange->name];
                         })->toArray();
                     })
                     ->searchable()
-                    ->visible(function(Get $get){
-                        return (bool)(!is_null($get($this->getName())) && !in_array($get($this->getName()), $this->scopesDontSupportRange));
+                    ->visible(function (Get $get) {
+                        return (bool) (! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange));
                     })
-                    ->default(DateRange::EXCLUSIVE->value)
+                    ->default(DateRange::EXCLUSIVE->value),
             ]),
         ])->query(function (Builder $query, array $data) {
             return $query->when($data[$this->getName()] ?? null, function ($query, $value) use ($data) {
                 if (in_array($value, $this->scopesRequireAdditionalParameters)) {
-                    $parameterValue = (!is_null($data['additional_parameter']) && intval($data['additional_parameter']) >= 1)
+                    $parameterValue = (! is_null($data['additional_parameter']) && intval($data['additional_parameter']) >= 1)
                         ? $data['additional_parameter']
                         : 1;
-                    if (!in_array($data[$this->getName()], $this->scopesDontSupportRange)) {
+                    if (! in_array($data[$this->getName()], $this->scopesDontSupportRange)) {
                         return $query->{$value}(intval($parameterValue), customRange: DateRange::tryFrom($data['range']));
                     } else {
                         return $query->{$value}(intval($parameterValue));
                     }
                 }
 
-                if (!in_array($data[$this->getName()], $this->scopesDontSupportRange)) {
+                if (! in_array($data[$this->getName()], $this->scopesDontSupportRange)) {
                     return $query->{$value}(customRange: DateRange::tryFrom($data['range']));
                 } else {
                     return $query->{$value}();
@@ -196,4 +196,3 @@ class DateScopeFilter extends Filter
         });
     }
 }
-
