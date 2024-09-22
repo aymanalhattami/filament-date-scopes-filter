@@ -106,6 +106,7 @@
       <data directive="@push" injection="true" prefix="&lt;?php&#10;$__env-&gt;startPush(" suffix="); ?&gt;" />
       <data directive="@pushif" injection="true" prefix="&lt;?php&#10;$__pushif_args = explode(','," suffix=", 2); if({$__pushif_args[0]}): $__env-&gt;startPush({$__pushif_args[1]}); ?&gt;" />
       <data directive="@pushonce" injection="true" prefix="&lt;?php&#10;$__php_storm_push_once_params = [" suffix="]; if (!$__env-&gt;hasRenderedOnce($__php_storm_push_once_params[1])): $__env-&gt;markAsRenderedOnce($__php_storm_push_once_params[1]); $__env-&gt;startPush($__php_storm_push_once_params[0]); ?&gt;" />
+      <data directive="@ray" injection="true" prefix="&lt;?php ray(" suffix="); ?&gt;" />
       <data directive="@readonly" injection="true" prefix="&lt;?php&#10;if(" suffix="): echo 'readonly'; endif; ?&gt;" />
       <data directive="@required" injection="true" prefix="&lt;?php&#10;if(" suffix="): echo 'required'; endif; ?&gt;" />
       <data directive="@section" injection="true" prefix="&lt;?php&#10;$__env-&gt;startSection(" suffix="); ?&gt;" />
@@ -123,7 +124,7 @@
       <data directive="@unless" injection="true" prefix="&lt;?php&#10;if (! (" suffix=")): ?&gt;" />
       <data directive="@unset" injection="true" prefix="&lt;?php&#10;unset(" suffix="); ?&gt;" />
       <data directive="@verbatim" />
-      <data directive="@vite" injection="true" prefix="&lt;?php echo app('\\Illuminate\\Foundation\\Vite')(" suffix="); ?&gt;" />
+      <data directive="@vite" injection="true" prefix="&lt;?php echo vite_func(" suffix="); ?&gt;" />
       <data directive="@viteReactRefresh" />
       <data directive="@vitereactrefresh" />
       <data directive="@while" injection="true" prefix="&lt;?php&#10;while(" suffix="): ?&gt;" />
