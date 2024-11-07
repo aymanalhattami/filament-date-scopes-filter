@@ -9,6 +9,7 @@ use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use LaracraftTech\LaravelDateScopes\DateRange;
+use Filament\Tables\Filters\Indicator;
 
 class DateScopeFilter extends Filter
 {
