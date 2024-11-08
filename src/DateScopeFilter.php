@@ -7,9 +7,9 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\Indicator;
 use Illuminate\Database\Eloquent\Builder;
 use LaracraftTech\LaravelDateScopes\DateRange;
-use Filament\Tables\Filters\Indicator;
 
 class DateScopeFilter extends Filter
 {
@@ -201,7 +201,7 @@ class DateScopeFilter extends Filter
 
             if ($data[$this->getName()] ?? null) {
                 $lable = $this->getLabel() ?? $this->getName();
-                $indicators[] = Indicator::make($lable . ' : ' .   $this->getScopeValue($data[$this->getName()]))
+                $indicators[] = Indicator::make($lable.' : '.$this->getScopeValue($data[$this->getName()]))
                     ->removeField($this->getName());
             }
 
@@ -217,6 +217,7 @@ class DateScopeFilter extends Filter
                 return $group[$key];
             }
         }
+
         return null;
     }
 }
