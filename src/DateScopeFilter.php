@@ -196,12 +196,12 @@ class DateScopeFilter extends Filter
             });
         });
 
-        $this->indicateUsing(function (array $data): ?array {
+        $this->indicateUsing(function (array $data): array {
             $indicators = [];
 
             if ($data[$this->getName()] ?? null) {
-                $lable = $this->getLabel() ?? $this->getName();
-                $indicators[] = Indicator::make($lable.' : '.$this->getScopeValue($data[$this->getName()]))
+                $label = $this->getLabel();
+                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($data[$this->getName()]))
                     ->removeField($this->getName());
             }
 
