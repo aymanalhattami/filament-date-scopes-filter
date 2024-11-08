@@ -9,6 +9,7 @@ use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use LaracraftTech\LaravelDateScopes\DateRange;
+use Filament\Tables\Filters\Indicator;
 
 class DateScopeFilter extends Filter
 {
@@ -194,5 +195,28 @@ class DateScopeFilter extends Filter
                 }
             });
         });
+
+        $this->indicateUsing(function (array $data): ?array {
+            $indicators = [];
+
+            if ($data[$this->getName()] ?? null) {
+                $lable = $this->getLabel() ?? $this->getName();
+                $indicators[] = Indicator::make($lable . ' : ' .   $this->getScopeValue($data[$this->getName()]))
+                    ->removeField($this->getName());
+            }
+
+            return $indicators;
+        });
+    }
+
+    public function getScopeValue(string $key): ?string
+    {
+
+        foreach ($this->scopes as $group) {
+            if (array_key_exists($key, $group)) {
+                return $group[$key];
+            }
+        }
+        return null;
     }
 }
