@@ -37,6 +37,14 @@ public static function table(Table $table): Table
 // ...
 ```
 
+#### Translations
+
+Publish the translations using:
+
+```bash
+php artisan vendor:publish --tag="filament-date-scopes-filter-translations"
+```
+
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
