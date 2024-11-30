@@ -12,6 +12,7 @@ class FilamentDateScopesFilterServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name($this->name);
+            ->name($this->name)
+            ->hasTranslations();
     }
 }

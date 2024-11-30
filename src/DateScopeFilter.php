@@ -13,92 +13,104 @@ use LaracraftTech\LaravelDateScopes\DateRange;
 
 class DateScopeFilter extends Filter
 {
-    private array $scopes = [
-        'Seconds' => [
-            'ofJustNow' => 'Just Now',
-            'ofLastSecond' => 'Last Second',
-            'ofLast15Seconds' => 'Last 15 Seconds',
-            'ofLast30Seconds' => 'Last 30 Seconds',
-            'ofLast45Seconds' => 'Last 45 Seconds',
-            'ofLast60Seconds' => 'Last 60 Seconds',
-            'ofLastSeconds' => 'Last Seconds',
-        ],
-        'Minutes' => [
-            'ofLastMinute' => 'Last Minute',
-            'ofLast15Minutes' => 'Last 15 Minutes',
-            'ofLast30Minutes' => 'Last 30 Minutes',
-            'ofLast45Minutes' => 'Last 45 Minutes',
-            'ofLast60Minutes' => 'Last 60 Minutes',
-            'ofLastMinutes' => 'Last Minutes',
-        ],
-        'Hours' => [
-            'ofLastHour' => 'Last Hour',
-            'ofLast6Hours' => 'Last 6 Hours',
-            'ofLast12Hours' => 'Last 12 Hours',
-            'ofLast18Hours' => 'Last 18 Hours',
-            'ofLast24Hours' => 'Last 24 Hours',
-            'ofLastHours' => 'Last Hours',
-        ],
-        'Days' => [
-            'ofToday' => 'Today',
-            'ofYesterday' => 'Yesterday',
-            'ofLast7Days' => 'Last 7D ays',
-            'ofLast21Days' => 'Last 21 Days',
-            'ofLast30Days' => 'Last 30 Days',
-            'ofLastDays' => 'Last Days',
-        ],
-        'Weeks' => [
-            'ofLastWeek' => 'Last Week',
-            'ofLast2Weeks' => 'Last 2 Weeks',
-            'ofLast3Weeks' => 'Last 3 Weeks',
-            'ofLast4Weeks' => 'Last 4 Weeks',
-            'ofLastWeeks' => 'Last Weeks',
-        ],
-        'Months' => [
-            'ofLastMonth' => 'Last Month',
-            'ofLast3Months' => 'Last 3 Months',
-            'ofLast6Months' => 'Last 6 Months',
-            'ofLast9Months' => 'Last 9 Months',
-            'ofLast12Months' => 'Last 12 Months',
-            'ofLastMonths' => 'Last Months',
-        ],
-        'Quarters' => [
-            'ofLastQuarter' => 'Last Quarter',
-            'ofLast2Quarters' => 'Last 2 Quarters',
-            'ofLast3Quarters' => 'Last 3 Quarters',
-            'ofLast4Quarters' => 'Last 4 Quarters',
-            'ofLastQuarters' => 'Last Quarters',
-        ],
-        'Years' => [
-            'ofLastYear' => 'Last Year',
-            'ofLastYears' => 'Last Years',
-        ],
-        'Decades' => [
-            'ofLastDecade' => 'Last Decade',
-            'ofLastDecades' => 'Last Decades',
-        ],
-        'Centuries' => [
-            'ofLastCentury' => 'Last Century',
-            'ofLastCenturies' => 'Last Centuries',
-        ],
-        'Millenniums' => [
-            'ofLastMillennium' => 'Last Millennium',
-            'ofLastMillenniums' => 'Last Millenniums',
-        ],
-        'toNow/toDate' => [
-            'secondToNow' => 'Second To Now',
-            'minuteToNow' => 'Minute To Now',
-            'hourToNow' => 'Hour To Now',
-            'dayToNow' => 'Day To Now',
-            'weekToDate' => 'Week To Date',
-            'monthToDate' => 'Month To Date',
-            'quarterToDate' => 'Quarter To Date',
-            'yearToDate' => 'Year To Date',
-            'decadeToDate' => 'Decade To Date',
-            'centuryToDate' => 'Century To Date',
-            'millenniumToDate' => 'Millennium To Date',
-        ],
-    ];
+    private function scopes(): array
+    {
+
+        return [
+            __('filament-date-scopes-filter::date-scope.Seconds.label') => [
+                'ofJustNow' => __('filament-date-scopes-filter::date-scope.Seconds.ofJustNow'),
+                'ofLastSecond' => __('filament-date-scopes-filter::date-scope.Seconds.ofLastSecond'),
+                'ofLast15Seconds' => __('filament-date-scopes-filter::date-scope.Seconds.ofLast15Seconds'),
+                'ofLast30Seconds' => __('filament-date-scopes-filter::date-scope.Seconds.ofLast30Seconds'),
+                'ofLast45Seconds' => __('filament-date-scopes-filter::date-scope.Seconds.ofLast45Seconds'),
+                'ofLast60Seconds' => __('filament-date-scopes-filter::date-scope.Seconds.ofLast60Seconds'),
+                'ofLastSeconds' => __('filament-date-scopes-filter::date-scope.Seconds.ofLastSeconds'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Minutes.label') => [
+                'ofLastMinute' => __('filament-date-scopes-filter::date-scope.Minutes.ofLastMinute'),
+                'ofLast15Minutes' => __('filament-date-scopes-filter::date-scope.Minutes.ofLast15Minutes'),
+                'ofLast30Minutes' => __('filament-date-scopes-filter::date-scope.Minutes.ofLast30Minutes'),
+                'ofLast45Minutes' => __('filament-date-scopes-filter::date-scope.Minutes.ofLast45Minutes'),
+                'ofLast60Minutes' => __('filament-date-scopes-filter::date-scope.Minutes.ofLast60Minutes'),
+                'ofLastMinutes' => __('filament-date-scopes-filter::date-scope.Minutes.ofLastMinutes'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Hours.label') => [
+                'ofLastHour' => __('filament-date-scopes-filter::date-scope.Hours.ofLastHour'),
+                'ofLast6Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast6Hours'),
+                'ofLast12Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast12Hours'),
+                'ofLast18Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast18Hours'),
+                'ofLast24Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast24Hours'),
+                'ofLastHours' => __('filament-date-scopes-filter::date-scope.Hours.ofLastHours'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Hours.label') => [
+                'ofLastHour' => __('filament-date-scopes-filter::date-scope.Hours.ofLastHour'),
+                'ofLast6Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast6Hours'),
+                'ofLast12Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast12Hours'),
+                'ofLast18Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast18Hours'),
+                'ofLast24Hours' => __('filament-date-scopes-filter::date-scope.Hours.ofLast24Hours'),
+                'ofLastHours' => __('filament-date-scopes-filter::date-scope.Hours.ofLastHours'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Days.label') => [
+                'ofToday' => __('filament-date-scopes-filter::date-scope.Days.ofToday'),
+                'ofYesterday' => __('filament-date-scopes-filter::date-scope.Days.ofYesterday'),
+                'ofLast7Days' => __('filament-date-scopes-filter::date-scope.Days.ofLast7Days'),
+                'ofLast21Days' => __('filament-date-scopes-filter::date-scope.Days.ofLast21Days'),
+                'ofLast30Days' => __('filament-date-scopes-filter::date-scope.Days.ofLast30Days'),
+                'ofLastDays' => __('filament-date-scopes-filter::date-scope.Days.ofLastDays'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Weeks.label') => [
+                'ofLastWeek' => __('filament-date-scopes-filter::date-scope.Weeks.ofLastWeek'),
+                'ofLast2Weeks' => __('filament-date-scopes-filter::date-scope.Weeks.ofLast2Weeks'),
+                'ofLast3Weeks' => __('filament-date-scopes-filter::date-scope.Weeks.ofLast3Weeks'),
+                'ofLast4Weeks' => __('filament-date-scopes-filter::date-scope.Weeks.ofLast4Weeks'),
+                'ofLastWeeks' => __('filament-date-scopes-filter::date-scope.Weeks.ofLastWeeks'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Months.label') => [
+                'ofLastMonth' => __('filament-date-scopes-filter::date-scope.Months.ofLastMonth'),
+                'ofLast3Months' => __('filament-date-scopes-filter::date-scope.Months.ofLast3Months'),
+                'ofLast6Months' => __('filament-date-scopes-filter::date-scope.Months.ofLast6Months'),
+                'ofLast9Months' => __('filament-date-scopes-filter::date-scope.Months.ofLast9Months'),
+                'ofLast12Months' => __('filament-date-scopes-filter::date-scope.Months.ofLast12Months'),
+                'ofLastMonths' => __('filament-date-scopes-filter::date-scope.Months.ofLastMonths'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Quarters.label') => [
+                'ofLastQuarter' => __('filament-date-scopes-filter::date-scope.Quarters.ofLastQuarter'),
+                'ofLast2Quarters' => __('filament-date-scopes-filter::date-scope.Quarters.ofLast2Quarters'),
+                'ofLast3Quarters' => __('filament-date-scopes-filter::date-scope.Quarters.ofLast3Quarters'),
+                'ofLast4Quarters' => __('filament-date-scopes-filter::date-scope.Quarters.ofLast4Quarters'),
+                'ofLastQuarters' => __('filament-date-scopes-filter::date-scope.Quarters.ofLastQuarters'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Years.label') => [
+                'ofLastYear' => __('filament-date-scopes-filter::date-scope.Years.ofLastYear'),
+                'ofLastYears' => __('filament-date-scopes-filter::date-scope.Years.ofLastYears'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Decades.label') => [
+                'ofLastDecade' => __('filament-date-scopes-filter::date-scope.Decades.ofLastDecade'),
+                'ofLastDecades' => __('filament-date-scopes-filter::date-scope.Decades.ofLastDecades'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Centuries.label') => [
+                'ofLastCentury' => __('filament-date-scopes-filter::date-scope.Centuries.ofLastCentury'),
+                'ofLastCenturies' => __('filament-date-scopes-filter::date-scope.Centuries.ofLastCenturies'),
+            ],
+            __('filament-date-scopes-filter::date-scope.Millenniums.label') => [
+                'ofLastMillennium' => __('filament-date-scopes-filter::date-scope.Millenniums.ofLastMillennium'),
+                'ofLastMillenniums' => __('filament-date-scopes-filter::date-scope.Millenniums.ofLastMillenniums'),
+            ],
+            __('filament-date-scopes-filter::date-scope.toNow/toDate.label') => [
+                'secondToNow' => __('filament-date-scopes-filter::date-scope.toNow/toDate.secondToNow'),
+                'minuteToNow' => __('filament-date-scopes-filter::date-scope.toNow/toDate.minuteToNow'),
+                'hourToNow' => __('filament-date-scopes-filter::date-scope.toNow/toDate.hourToNow'),
+                'dayToNow' => __('filament-date-scopes-filter::date-scope.toNow/toDate.dayToNow'),
+                'weekToDate' => __('filament-date-scopes-filter::date-scope.toNow/toDate.weekToDate'),
+                'monthToDate' => __('filament-date-scopes-filter::date-scope.toNow/toDate.monthToDate'),
+                'quarterToDate' => __('filament-date-scopes-filter::date-scope.toNow/toDate.quarterToDate'),
+                'yearToDate' => __('filament-date-scopes-filter::date-scope.toNow/toDate.yearToDate'),
+                'decadeToDate' => __('filament-date-scopes-filter::date-scope.toNow/toDate.decadeToDate'),
+                'centuryToDate' => __('filament-date-scopes-filter::date-scope.toNow/toDate.centuryToDate'),
+                'millenniumToDate' => __('filament-date-scopes-filter::date-scope.toNow/toDate.millenniumToDate'),
+            ],
+        ];
+    }
 
     private array $scopesRequireAdditionalParameters = [
         'ofLastSeconds',
@@ -145,10 +157,10 @@ class DateScopeFilter extends Filter
     {
         parent::setUp();
 
-        $this->form(fn () => [
+        $this->form(fn() => [
             Grid::make($this->getColumns())->schema([
                 Select::make($this->getName())
-                    ->options($this->scopes)
+                    ->options($this->scopes())
                     ->searchable()
                     ->reactive(),
                 TextInput::make('additional_parameter')
@@ -212,7 +224,7 @@ class DateScopeFilter extends Filter
     public function getScopeValue(string $key): ?string
     {
 
-        foreach ($this->scopes as $group) {
+        foreach ($this->scopes() as $group) {
             if (array_key_exists($key, $group)) {
                 return $group[$key];
             }
