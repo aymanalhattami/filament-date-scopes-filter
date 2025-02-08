@@ -2,6 +2,20 @@
 
 All notable changes to `filament-date-scopes-filter` will be documented in this file
 
+## 1.2.0 - 2025-02-08
+
+### What's Changed
+
+* Add Multi language support. And Arabic language support by @A909M in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/7
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/8
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/9
+
+### New Contributors
+
+* @dependabot made their first contribution in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/8
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-date-scopes-filter/compare/1.1.0...1.2.0
+
 ## 1.1.0 - 2024-11-13
 
 ### What's Changed
