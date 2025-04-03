@@ -184,17 +184,17 @@ class DateScopeFilter extends Filter
         ])->query(function (Builder $query, array $data) {
             return $query->when($data[$this->getName()] ?? null, function ($query, $value) use ($data) {
                 if (in_array($value, $this->scopesRequireAdditionalParameters, true)) {
-                    $parameterValue = (! is_null($data['additional_parameter']) && (int)$data['additional_parameter'] >= 1)
+                    $parameterValue = (! is_null($data['additional_parameter']) && (int) $data['additional_parameter'] >= 1)
                         ? $data['additional_parameter']
                         : 1;
-                    if (!in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
-                        return $query->{$value}((int)$parameterValue, customRange: DateRange::tryFrom($data['range']));
+                    if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
+                        return $query->{$value}((int) $parameterValue, customRange: DateRange::tryFrom($data['range']));
                     }
 
-                    return $query->{$value}((int)$parameterValue);
+                    return $query->{$value}((int) $parameterValue);
                 }
 
-                if (!in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
+                if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
                     return $query->{$value}(customRange: DateRange::tryFrom($data['range']));
                 }
 
@@ -254,7 +254,7 @@ class DateScopeFilter extends Filter
                 })
                 ->native(false)
                 ->visible(function (Get $get) {
-                    return ! is_null($get($this->getName())) && !in_array($get($this->getName()), $this->scopesDontSupportRange, true);
+                    return ! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange, true);
                 })
                 ->default(DateRange::EXCLUSIVE->value),
         ];
