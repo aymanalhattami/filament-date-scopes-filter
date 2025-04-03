@@ -60,7 +60,6 @@ class DateScopeFilter extends Filter
 
     private function scopes(): array
     {
-
         return [
             __('filament-date-scopes-filter::date-scope.Seconds.label') => [
                 'ofJustNow' => __('filament-date-scopes-filter::date-scope.Seconds.ofJustNow'),
@@ -184,22 +183,22 @@ class DateScopeFilter extends Filter
                 ->visible(!$this->isWrapInFieldset())
         ])->query(function (Builder $query, array $data) {
             return $query->when($data[$this->getName()] ?? null, function ($query, $value) use ($data) {
-                if (in_array($value, $this->scopesRequireAdditionalParameters)) {
-                    $parameterValue = (! is_null($data['additional_parameter']) && intval($data['additional_parameter']) >= 1)
+                if (in_array($value, $this->scopesRequireAdditionalParameters, true)) {
+                    $parameterValue = (! is_null($data['additional_parameter']) && (int)$data['additional_parameter'] >= 1)
                         ? $data['additional_parameter']
                         : 1;
-                    if (! in_array($data[$this->getName()], $this->scopesDontSupportRange)) {
-                        return $query->{$value}(intval($parameterValue), customRange: DateRange::tryFrom($data['range']));
-                    } else {
-                        return $query->{$value}(intval($parameterValue));
+                    if (!in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
+                        return $query->{$value}((int)$parameterValue, customRange: DateRange::tryFrom($data['range']));
                     }
+
+                    return $query->{$value}((int)$parameterValue);
                 }
 
-                if (! in_array($data[$this->getName()], $this->scopesDontSupportRange)) {
+                if (!in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
                     return $query->{$value}(customRange: DateRange::tryFrom($data['range']));
-                } else {
-                    return $query->{$value}();
                 }
+
+                return $query->{$value}();
             });
         });
 
@@ -245,7 +244,7 @@ class DateScopeFilter extends Filter
                 ->default(2)
                 ->numeric()
                 ->visible(function (Get $get) {
-                    return in_array($get($this->getName()), $this->scopesRequireAdditionalParameters);
+                    return in_array($get($this->getName()), $this->scopesRequireAdditionalParameters, true);
                 }),
             Select::make('range')
                 ->options(function () {
@@ -255,7 +254,7 @@ class DateScopeFilter extends Filter
                 })
                 ->native(false)
                 ->visible(function (Get $get) {
-                    return ! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange);
+                    return ! is_null($get($this->getName())) && !in_array($get($this->getName()), $this->scopesDontSupportRange, true);
                 })
                 ->default(DateRange::EXCLUSIVE->value),
         ];
