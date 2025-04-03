@@ -97,4 +97,9 @@ return [
         'centuryToDate' => 'Century To Date',
         'millenniumToDate' => 'Millennium To Date',
     ],
+
+    'Number of ' => 'Number of ',
+
+    'INCLUSIVE' => 'Inclusive',
+    'EXCLUSIVE' => 'Exclusive',
 ];

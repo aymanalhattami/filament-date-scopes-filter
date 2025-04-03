@@ -2,7 +2,7 @@
 
 return [
     'Seconds' => [
-        'label' => 'ثواني',
+        'label' => 'الثواني',
         'ofJustNow' => 'الآن',
         'ofLastSecond' => 'الثانية الماضية',
         'ofLast15Seconds' => 'آخر 15 ثانية',
@@ -97,4 +97,9 @@ return [
         'centuryToDate' => 'القرن حتى اليوم',
         'millenniumToDate' => 'الألفية حتى اليوم',
     ],
+
+    'Number of ' => 'عدد ',
+
+    'INCLUSIVE' => 'مع',
+    'EXCLUSIVE' => 'بدون',
 ];
