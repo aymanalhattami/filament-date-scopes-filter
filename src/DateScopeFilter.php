@@ -183,7 +183,7 @@ class DateScopeFilter extends Filter
                     })
                     ->native(false)
                     ->visible(function (Get $get) {
-                        return (! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange));
+                        return ! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange);
                     })
                     ->default(DateRange::EXCLUSIVE->value),
             ]),
