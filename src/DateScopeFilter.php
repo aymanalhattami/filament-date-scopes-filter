@@ -2,6 +2,8 @@
 
 namespace AymanAlhattami\FilamentDateScopesFilter;
 
+use Closure;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -13,6 +15,49 @@ use LaracraftTech\LaravelDateScopes\DateRange;
 
 class DateScopeFilter extends Filter
 {
+    protected bool|Closure $wrapInFieldset = false;
+
+    private array $scopesRequireAdditionalParameters = [
+        'ofLastSeconds',
+        'ofLastMinutes',
+        'ofLastHours',
+        'ofLastDays',
+        'ofLastWeeks',
+        'ofLastMonths',
+        'ofLastQuarters',
+        'ofLastYears',
+        'ofLastDecades',
+        'ofLastCenturies',
+        'ofLastMillenniums',
+    ];
+
+    private array $scopesDontSupportRange = [
+        'ofJustNow',
+        'ofLastSecond',
+        'ofLastMinute',
+        'ofLastHour',
+        'ofToday',
+        'ofYesterday',
+        'ofLastWeek',
+        'ofLastMonth',
+        'ofLastQuarter',
+        'ofLastYear',
+        'ofLastDecade',
+        'ofLastCentury',
+        'ofLastMillennium',
+        'secondToNow',
+        'minuteToNow',
+        'hourToNow',
+        'dayToNow',
+        'weekToDate',
+        'monthToDate',
+        'quarterToDate',
+        'yearToDate',
+        'decadeToDate',
+        'centuryToDate',
+        'millenniumToDate',
+    ];
+
     private function scopes(): array
     {
 
@@ -112,81 +157,31 @@ class DateScopeFilter extends Filter
         ];
     }
 
-    private array $scopesRequireAdditionalParameters = [
-        'ofLastSeconds',
-        'ofLastMinutes',
-        'ofLastHours',
-        'ofLastDays',
-        'ofLastWeeks',
-        'ofLastMonths',
-        'ofLastQuarters',
-        'ofLastYears',
-        'ofLastDecades',
-        'ofLastCenturies',
-        'ofLastMillenniums',
-    ];
+    public function wrapInFieldset($value = true): static
+    {
+        $this->wrapInFieldset = $value;
 
-    private array $scopesDontSupportRange = [
-        'ofJustNow',
-        'ofLastSecond',
-        'ofLastMinute',
-        'ofLastHour',
-        'ofToday',
-        'ofYesterday',
-        'ofLastWeek',
-        'ofLastMonth',
-        'ofLastQuarter',
-        'ofLastYear',
-        'ofLastDecade',
-        'ofLastCentury',
-        'ofLastMillennium',
-        'secondToNow',
-        'minuteToNow',
-        'hourToNow',
-        'dayToNow',
-        'weekToDate',
-        'monthToDate',
-        'quarterToDate',
-        'yearToDate',
-        'decadeToDate',
-        'centuryToDate',
-        'millenniumToDate',
-    ];
+        return $this;
+    }
+
+    private function isWrapInFieldset(): bool
+    {
+        return $this->evaluate($this->wrapInFieldset);
+    }
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->form(fn () => [
-            Grid::make($this->getColumns())->schema([
-                Select::make($this->getName())
-                    ->options($this->scopes())
-                    ->searchable()
-                    ->live(),
-                TextInput::make('additional_parameter')
-                    ->label(function (Get $get) {
-                        $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
-                        $lastWord = end($words);
-
-                        return __('filament-date-scopes-filter::date-scope.Number of ').__('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
-                    })
-                    ->default(2)
-                    ->numeric()
-                    ->visible(function (Get $get) {
-                        return in_array($get($this->getName()), $this->scopesRequireAdditionalParameters);
-                    }),
-                Select::make('range')
-                    ->options(function () {
-                        return collect(DateRange::cases())->mapWithKeys(function ($dateRange) {
-                            return [$dateRange->value => __('filament-date-scopes-filter::date-scope.'.$dateRange->name)];
-                        })->toArray();
-                    })
-                    ->native(false)
-                    ->visible(function (Get $get) {
-                        return ! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange);
-                    })
-                    ->default(DateRange::EXCLUSIVE->value),
-            ]),
+            Fieldset::make($this->getName())
+                ->label($this->getLabel())
+                ->schema($this->getSearchFormFields())
+                ->visible($this->isWrapInFieldset()),
+            Grid::make($this->getColumns())
+                ->label($this->getLabel())
+                ->schema($this->getSearchFormFields())
+                ->visible(!$this->isWrapInFieldset())
         ])->query(function (Builder $query, array $data) {
             return $query->when($data[$this->getName()] ?? null, function ($query, $value) use ($data) {
                 if (in_array($value, $this->scopesRequireAdditionalParameters)) {
@@ -231,5 +226,38 @@ class DateScopeFilter extends Filter
         }
 
         return null;
+    }
+
+    private function getSearchFormFields(): array
+    {
+        return [
+            Select::make($this->getName())
+                ->options($this->scopes())
+                ->searchable()
+                ->live(),
+            TextInput::make('additional_parameter')
+                ->label(function (Get $get) {
+                    $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
+                    $lastWord = end($words);
+
+                    return __('filament-date-scopes-filter::date-scope.Number of ').__('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
+                })
+                ->default(2)
+                ->numeric()
+                ->visible(function (Get $get) {
+                    return in_array($get($this->getName()), $this->scopesRequireAdditionalParameters);
+                }),
+            Select::make('range')
+                ->options(function () {
+                    return collect(DateRange::cases())->mapWithKeys(function ($dateRange) {
+                        return [$dateRange->value => __('filament-date-scopes-filter::date-scope.'.$dateRange->name)];
+                    })->toArray();
+                })
+                ->native(false)
+                ->visible(function (Get $get) {
+                    return ! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange);
+                })
+                ->default(DateRange::EXCLUSIVE->value),
+        ];
     }
 }
