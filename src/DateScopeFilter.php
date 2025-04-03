@@ -168,7 +168,7 @@ class DateScopeFilter extends Filter
                         $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
                         $lastWord = end($words);
 
-                        return __('filament-date-scopes-filter::date-scope.Number of ') .  __('filament-date-scopes-filter::date-scope.' . $lastWord . '.label');
+                        return __('filament-date-scopes-filter::date-scope.Number of ').__('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
                     })
                     ->default(2)
                     ->numeric()
@@ -178,7 +178,7 @@ class DateScopeFilter extends Filter
                 Select::make('range')
                     ->options(function () {
                         return collect(DateRange::cases())->mapWithKeys(function ($dateRange) {
-                            return [$dateRange->value => __('filament-date-scopes-filter::date-scope.' . $dateRange->name)];
+                            return [$dateRange->value => __('filament-date-scopes-filter::date-scope.'.$dateRange->name)];
                         })->toArray();
                     })
                     ->native(false)
