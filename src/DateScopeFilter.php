@@ -162,7 +162,7 @@ class DateScopeFilter extends Filter
                 Select::make($this->getName())
                     ->options($this->scopes())
                     ->searchable()
-                    ->reactive(),
+                    ->live(),
                 TextInput::make('additional_parameter')
                     ->label(function (Get $get) {
                         $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
@@ -173,7 +173,7 @@ class DateScopeFilter extends Filter
                     ->default(2)
                     ->numeric()
                     ->visible(function (Get $get) {
-                        return (bool) in_array($get($this->getName()), $this->scopesRequireAdditionalParameters);
+                        return in_array($get($this->getName()), $this->scopesRequireAdditionalParameters);
                     }),
                 Select::make('range')
                     ->options(function () {
@@ -183,7 +183,7 @@ class DateScopeFilter extends Filter
                     })
                     ->native(false)
                     ->visible(function (Get $get) {
-                        return (bool) (! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange));
+                        return (! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange));
                     })
                     ->default(DateRange::EXCLUSIVE->value),
             ]),
