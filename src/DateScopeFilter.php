@@ -180,7 +180,7 @@ class DateScopeFilter extends Filter
             Grid::make($this->getColumns())
                 ->label($this->getLabel())
                 ->schema($this->getSearchFormFields())
-                ->visible(!$this->isWrapInFieldset())
+                ->visible(! $this->isWrapInFieldset()),
         ])->query(function (Builder $query, array $data) {
             return $query->when($data[$this->getName()] ?? null, function ($query, $value) use ($data) {
                 if (in_array($value, $this->scopesRequireAdditionalParameters, true)) {
