@@ -106,5 +106,5 @@ return [
     'yes' => 'yes',
     'no' => 'no',
 
-    "Include last" => "Include last",
+    'Include last' => 'Include last',
 ];

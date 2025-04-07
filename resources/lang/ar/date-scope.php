@@ -117,5 +117,5 @@ return [
     'yes' => 'نعم',
     'no' => 'لا',
 
-    "Include last" => "يتضمن اخر",
+    'Include last' => 'يتضمن اخر',
 ];

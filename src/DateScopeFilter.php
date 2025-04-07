@@ -370,13 +370,13 @@ class DateScopeFilter extends Filter
             ToggleButtons::make('range')
                 ->options([
                     DateRange::INCLUSIVE->value => __('filament-date-scopes-filter::date-scope.yes'),
-                    DateRange::EXCLUSIVE->value => __('filament-date-scopes-filter::date-scope.no')
+                    DateRange::EXCLUSIVE->value => __('filament-date-scopes-filter::date-scope.no'),
                 ])
                 ->label(function (Get $get) {
                     $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
                     $lastWord = end($words);
 
-                    return __('filament-date-scopes-filter::date-scope.Include last') . ' ' . __('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
+                    return __('filament-date-scopes-filter::date-scope.Include last').' '.__('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
                 })
                 ->grouped()
                 ->visible(function (Get $get) {
