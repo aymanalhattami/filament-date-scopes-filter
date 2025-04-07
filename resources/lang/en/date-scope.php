@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Seconds' => [
+    'seconds' => [
         'label' => 'Seconds',
         'secondToNow' => 'Second To Now',
         'ofJustNow' => 'Just Now',
@@ -12,7 +12,7 @@ return [
         'ofLast60Seconds' => 'Last 60 Seconds',
         'ofLastSeconds' => 'Last Seconds',
     ],
-    'Minutes' => [
+    'minutes' => [
         'label' => 'Minutes',
         'minuteToNow' => 'Minute To Now',
         'ofLastMinute' => 'Last Minute',
@@ -22,7 +22,7 @@ return [
         'ofLast60Minutes' => 'Last 60 Minutes',
         'ofLastMinutes' => 'Last Minutes',
     ],
-    'Hours' => [
+    'hours' => [
         'label' => 'Hours',
         'hourToNow' => 'Hour To Now',
         'ofLastHour' => 'Last Hour',
@@ -32,7 +32,7 @@ return [
         'ofLast24Hours' => 'Last 24 Hours',
         'ofLastHours' => 'Last Hours',
     ],
-    'Days' => [
+    'days' => [
         'label' => 'Days',
         'dayToNow' => 'Day To Now',
         'ofToday' => 'Today',
@@ -42,7 +42,7 @@ return [
         'ofLast30Days' => 'Last 30 Days',
         'ofLastDays' => 'Last Days',
     ],
-    'Weeks' => [
+    'weeks' => [
         'label' => 'Weeks',
         'weekToDate' => 'Week To Date',
         'ofLastWeek' => 'Last Week',
@@ -51,7 +51,7 @@ return [
         'ofLast4Weeks' => 'Last 4 Weeks',
         'ofLastWeeks' => 'Last Weeks',
     ],
-    'Months' => [
+    'months' => [
         'label' => 'Months',
         'monthToDate' => 'Month To Date',
         'ofLastMonth' => 'Last Month',
@@ -61,7 +61,7 @@ return [
         'ofLast12Months' => 'Last 12 Months',
         'ofLastMonths' => 'Last Months',
     ],
-    'Quarters' => [
+    'quarters' => [
         'label' => 'Quarters',
         'quarterToDate' => 'Quarter To Date',
         'ofLastQuarter' => 'Last Quarter',
@@ -70,25 +70,25 @@ return [
         'ofLast4Quarters' => 'Last 4 Quarters',
         'ofLastQuarters' => 'Last Quarters',
     ],
-    'Years' => [
+    'years' => [
         'label' => 'Years',
         'yearToDate' => 'Year To Date',
         'ofLastYear' => 'Last Year',
         'ofLastYears' => 'Last Years',
     ],
-    'Decades' => [
+    'decades' => [
         'label' => 'Decades',
         'decadeToDate' => 'Decade To Date',
         'ofLastDecade' => 'Last Decade',
         'ofLastDecades' => 'Last Decades',
     ],
-    'Centuries' => [
+    'centuries' => [
         'label' => 'Centuries',
         'centuryToDate' => 'Century To Date',
         'ofLastCentury' => 'Last Century',
         'ofLastCenturies' => 'Last Centuries',
     ],
-    'Millenniums' => [
+    'millenniums' => [
         'label' => 'Millenniums',
         'millenniumToDate' => 'Millennium To Date',
         'ofLastMillennium' => 'Last Millennium',
@@ -100,6 +100,6 @@ return [
     'INCLUSIVE' => 'Inclusive',
     'EXCLUSIVE' => 'Exclusive',
 
-    'yes' => 'yes',
-    'no' => 'no',
+    'yes' => 'Yes',
+    'no' => 'No',
 ];
