@@ -376,7 +376,7 @@ class DateScopeFilter extends Filter
                     $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
                     $lastWord = end($words);
 
-                    return __('filament-date-scopes-filter::date-scope.Include last').' '.__('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
+                    return __('filament-date-scopes-filter::date-scope.Include').' '.__('filament-date-scopes-filter::date-scope.'.$lastWord.'.current');
                 })
                 ->grouped()
                 ->visible(function (Get $get) {
