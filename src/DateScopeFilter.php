@@ -61,11 +61,75 @@ class DateScopeFilter extends Filter
         'millenniumToDate',
     ];
 
-    public function withoutScopes(array|Closure $scopes): static
+    public function withoutScopes(ScopeType|array|Closure $scope): static
     {
-        $this->excludeScopes[] = $scopes;
+        if ($scope instanceof ScopeType || $scope instanceof Closure) {
+            $this->withoutScopes[] = $scope;
+        } elseif (is_array($scope)) {
+            $this->withoutScopes = array_merge($this->withoutScopes, $scope);
+        }
 
         return $this;
+    }
+
+    public function withoutSecond(): static
+    {
+        return $this->withoutScopes(ScopeType::Second);
+    }
+
+    public function withoutMinute(): static
+    {
+        return $this->withoutScopes(ScopeType::Minute);
+    }
+
+    public function withoutHour(): static
+    {
+        return $this->withoutScopes(ScopeType::Hour);
+    }
+
+    public function withoutDay(): static
+    {
+        return $this->withoutScopes(ScopeType::Day);
+    }
+
+    public function withoutWeek(): static
+    {
+        return $this->withoutScopes(ScopeType::Week);
+    }
+
+    public function withoutMonth():static
+    {
+        return $this->withoutScopes(ScopeType::Month);
+    }
+
+    public function withoutQuarter(): static
+    {
+        return $this->withoutScopes(ScopeType::Quarter);
+    }
+
+    public function withoutYear(): static
+    {
+        return $this->withoutScopes(ScopeType::Year);
+    }
+
+    public function withoutDecade(): static
+    {
+        return $this->withoutScopes(ScopeType::Decade);
+    }
+
+    public function withoutCentury(): static
+    {
+        return $this->withoutScopes(ScopeType::Century);
+    }
+
+    public function withoutMillennium(): static
+    {
+        return $this->withoutScopes(ScopeType::Millennium);
+    }
+
+    public function withoutToNow(): static
+    {
+        return $this->withoutScopes(ScopeType::ToNow);
     }
 
     private function getWithoutScopes(): array
