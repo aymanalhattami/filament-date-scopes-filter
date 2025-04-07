@@ -153,7 +153,7 @@ class DateScopeFilter extends Filter
                     'ofLastSeconds' => __('filament-date-scopes-filter::date-scope.Seconds.ofLastSeconds'),
                 ],
             ],
-            'minute' => [
+            ScopeType::Minute->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Minutes.label'),
                 'scopes' => [
 
@@ -165,7 +165,7 @@ class DateScopeFilter extends Filter
                     'ofLastMinutes' => __('filament-date-scopes-filter::date-scope.Minutes.ofLastMinutes'),
                 ],
             ],
-            'hour' => [
+            ScopeType::Hour->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Hours.label'),
                 'scopes' => [
                     'ofLastHour' => __('filament-date-scopes-filter::date-scope.Hours.ofLastHour'),
@@ -176,7 +176,7 @@ class DateScopeFilter extends Filter
                     'ofLastHours' => __('filament-date-scopes-filter::date-scope.Hours.ofLastHours'),
                 ],
             ],
-            'day' => [
+            ScopeType::Day->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Days.label'),
                 'scopes' => [
                     'ofToday' => __('filament-date-scopes-filter::date-scope.Days.ofToday'),
@@ -187,7 +187,7 @@ class DateScopeFilter extends Filter
                     'ofLastDays' => __('filament-date-scopes-filter::date-scope.Days.ofLastDays'),
                 ],
             ],
-            'week' => [
+            ScopeType::Week->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Weeks.label'),
                 'scopes' => [
                     'ofLastWeek' => __('filament-date-scopes-filter::date-scope.Weeks.ofLastWeek'),
@@ -197,7 +197,7 @@ class DateScopeFilter extends Filter
                     'ofLastWeeks' => __('filament-date-scopes-filter::date-scope.Weeks.ofLastWeeks'),
                 ],
             ],
-            'month' => [
+            ScopeType::Month->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Months.label'),
                 'scopes' => [
                     'ofLastMonth' => __('filament-date-scopes-filter::date-scope.Months.ofLastMonth'),
@@ -208,7 +208,7 @@ class DateScopeFilter extends Filter
                     'ofLastMonths' => __('filament-date-scopes-filter::date-scope.Months.ofLastMonths'),
                 ],
             ],
-            'quarter' => [
+            ScopeType::Quarter->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Quarters.label'),
                 'scopes' => [
                     'ofLastQuarter' => __('filament-date-scopes-filter::date-scope.Quarters.ofLastQuarter'),
@@ -218,35 +218,35 @@ class DateScopeFilter extends Filter
                     'ofLastQuarters' => __('filament-date-scopes-filter::date-scope.Quarters.ofLastQuarters'),
                 ],
             ],
-            'year' => [
+            ScopeType::Year->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Years.label'),
                 'scopes' => [
                     'ofLastYear' => __('filament-date-scopes-filter::date-scope.Years.ofLastYear'),
                     'ofLastYears' => __('filament-date-scopes-filter::date-scope.Years.ofLastYears'),
                 ],
             ],
-            'decade' => [
+            ScopeType::Decade->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Decades.label'),
                 'scopes' => [
                     'ofLastDecade' => __('filament-date-scopes-filter::date-scope.Decades.ofLastDecade'),
                     'ofLastDecades' => __('filament-date-scopes-filter::date-scope.Decades.ofLastDecades'),
                 ],
             ],
-            'century' => [
+            ScopeType::Century->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Centuries.label'),
                 'scopes' => [
                     'ofLastCentury' => __('filament-date-scopes-filter::date-scope.Centuries.ofLastCentury'),
                     'ofLastCenturies' => __('filament-date-scopes-filter::date-scope.Centuries.ofLastCenturies'),
                 ],
             ],
-            'millennium' => [
+            ScopeType::Millennium->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Millenniums.label'),
                 'scopes' => [
                     'ofLastMillennium' => __('filament-date-scopes-filter::date-scope.Millenniums.ofLastMillennium'),
                     'ofLastMillenniums' => __('filament-date-scopes-filter::date-scope.Millenniums.ofLastMillenniums'),
                 ],
             ],
-            'to_now' => [
+            ScopeType::ToNow->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.toNow/toDate.label'),
                 'scopes' => [
                     'secondToNow' => __('filament-date-scopes-filter::date-scope.toNow/toDate.secondToNow'),
