@@ -97,7 +97,7 @@ class DateScopeFilter extends Filter
         return $this->withoutScopes(ScopeType::Week);
     }
 
-    public function withoutMonth():static
+    public function withoutMonth(): static
     {
         return $this->withoutScopes(ScopeType::Month);
     }
