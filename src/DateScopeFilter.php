@@ -144,7 +144,7 @@ class DateScopeFilter extends Filter
             ScopeType::Second->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.seconds.label'),
                 'scopes' => [
-//                    'secondToNow' => __('filament-date-scopes-filter::date-scope.seconds.secondToNow'), // query transactions created during the start of the current second till now (equivalent of just now)
+                    //                    'secondToNow' => __('filament-date-scopes-filter::date-scope.seconds.secondToNow'), // query transactions created during the start of the current second till now (equivalent of just now)
                     'ofJustNow' => __('filament-date-scopes-filter::date-scope.seconds.ofJustNow'),
                     'ofLastSecond' => __('filament-date-scopes-filter::date-scope.seconds.ofLastSecond'),
                     'ofLast15Seconds' => __('filament-date-scopes-filter::date-scope.seconds.ofLast15Seconds'),
@@ -255,7 +255,7 @@ class DateScopeFilter extends Filter
                     'ofLastMillennium' => __('filament-date-scopes-filter::date-scope.millenniums.ofLastMillennium'),
                     'ofLastMillenniums' => __('filament-date-scopes-filter::date-scope.millenniums.ofLastMillenniums'),
                 ],
-            ]
+            ],
         ];
     }
 
@@ -354,7 +354,7 @@ class DateScopeFilter extends Filter
                     $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
                     $lastWord = str(end($words))->lower();
 
-                    return __('filament-date-scopes-filter::date-scope.Number of') . ' ' .__('filament-date-scopes-filter::date-scope.'.$lastWord.'.plural_label');
+                    return __('filament-date-scopes-filter::date-scope.Number of').' '.__('filament-date-scopes-filter::date-scope.'.$lastWord.'.plural_label');
                 })
                 ->default(2)
                 ->numeric()
@@ -369,7 +369,6 @@ class DateScopeFilter extends Filter
                 ->label(function (Get $get) {
                     $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
                     $lastWord = str(end($words))->lower();
-
 
                     return __('filament-date-scopes-filter::date-scope.Include').' '.__('filament-date-scopes-filter::date-scope.'.$lastWord.'.current');
                 })
