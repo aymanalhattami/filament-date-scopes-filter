@@ -7,6 +7,7 @@ use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\Indicator;
@@ -359,20 +360,25 @@ class DateScopeFilter extends Filter
                     $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
                     $lastWord = end($words);
 
-                    return __('filament-date-scopes-filter::date-scope.Number of ').__('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
+                    return __('filament-date-scopes-filter::date-scope.Number of ').__('filament-date-scopes-filter::date-scope.'.$lastWord.'.plural_label');
                 })
                 ->default(2)
                 ->numeric()
                 ->visible(function (Get $get) {
                     return in_array($get($this->getName()), $this->scopesRequireAdditionalParameters, true);
                 }),
-            Select::make('range')
-                ->options(function () {
-                    return collect(DateRange::cases())->mapWithKeys(function ($dateRange) {
-                        return [$dateRange->value => __('filament-date-scopes-filter::date-scope.'.$dateRange->name)];
-                    })->toArray();
+            ToggleButtons::make('range')
+                ->options([
+                    DateRange::INCLUSIVE->value => __('filament-date-scopes-filter::date-scope.yes'),
+                    DateRange::EXCLUSIVE->value => __('filament-date-scopes-filter::date-scope.no')
+                ])
+                ->label(function (Get $get) {
+                    $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
+                    $lastWord = end($words);
+
+                    return __('filament-date-scopes-filter::date-scope.Include last') . ' ' . __('filament-date-scopes-filter::date-scope.'.$lastWord.'.label');
                 })
-                ->native(false)
+                ->grouped()
                 ->visible(function (Get $get) {
                     return ! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange, true);
                 })

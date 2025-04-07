@@ -2,7 +2,8 @@
 
 return [
     'Seconds' => [
-        'label' => 'الثواني',
+        'label' => 'ثانية',
+        'plural_label' => 'الثواني',
         'ofJustNow' => 'الآن',
         'ofLastSecond' => 'الثانية الماضية',
         'ofLast15Seconds' => 'آخر 15 ثانية',
@@ -12,7 +13,8 @@ return [
         'ofLastSeconds' => 'الثواني الماضية',
     ],
     'Minutes' => [
-        'label' => 'الدقائق',
+        'label' => 'دقيقة',
+        'plural_label' => 'الدقائق',
         'ofLastMinute' => 'الدقيقة الماضية',
         'ofLast15Minutes' => 'آخر 15 دقيقة',
         'ofLast30Minutes' => 'آخر 30 دقيقة',
@@ -21,7 +23,8 @@ return [
         'ofLastMinutes' => 'الدقائق الماضية',
     ],
     'Hours' => [
-        'label' => 'الساعات',
+        'label' => 'ساعة',
+        'plural_label' => 'الساعات',
         'ofLastHour' => 'الساعة الماضية',
         'ofLast6Hours' => 'آخر 6 ساعات',
         'ofLast12Hours' => 'آخر 12 ساعة',
@@ -30,7 +33,8 @@ return [
         'ofLastHours' => 'الساعات الماضية',
     ],
     'Days' => [
-        'label' => 'الأيام',
+        'label' => 'يوم',
+        'plural_label' => 'الأيام',
         'ofToday' => 'اليوم',
         'ofYesterday' => 'أمس',
         'ofLast7Days' => 'آخر 7 أيام',
@@ -39,7 +43,8 @@ return [
         'ofLastDays' => 'الأيام الماضية',
     ],
     'Weeks' => [
-        'label' => 'الأسابيع',
+        'label' => 'اسبوع',
+        'plural_label' => 'الأسابيع',
         'ofLastWeek' => 'الأسبوع الماضي',
         'ofLast2Weeks' => 'آخر أسبوعين',
         'ofLast3Weeks' => 'آخر 3 أسابيع',
@@ -47,7 +52,8 @@ return [
         'ofLastWeeks' => 'الأسابيع الماضية',
     ],
     'Months' => [
-        'label' => 'الأشهر',
+        'label' => 'شهر',
+        'plural_label' => 'الأشهر',
         'ofLastMonth' => 'الشهر الماضي',
         'ofLast3Months' => 'آخر 3 أشهر',
         'ofLast6Months' => 'آخر 6 أشهر',
@@ -56,7 +62,8 @@ return [
         'ofLastMonths' => 'الأشهر الماضية',
     ],
     'Quarters' => [
-        'label' => 'الأرباع',
+        'label' => 'ربع',
+        'plural_label' => 'الأرباع',
         'ofLastQuarter' => 'الربع الماضي',
         'ofLast2Quarters' => 'آخر ربعين',
         'ofLast3Quarters' => 'آخر 3 أرباع',
@@ -64,22 +71,26 @@ return [
         'ofLastQuarters' => 'الأرباع الماضية',
     ],
     'Years' => [
-        'label' => 'السنوات',
+        'label' => 'سنة',
+        'plural_label' => 'السنوات',
         'ofLastYear' => 'العام الماضي',
         'ofLastYears' => 'السنوات الماضية',
     ],
     'Decades' => [
-        'label' => 'العقود',
+        'label' => 'عقد',
+        'plural_label' => 'العقود',
         'ofLastDecade' => 'العقد الماضي',
         'ofLastDecades' => 'العقود الماضية',
     ],
     'Centuries' => [
-        'label' => 'القرون',
+        'label' => 'قرن',
+        'plural_label' => 'القرون',
         'ofLastCentury' => 'القرن الماضي',
         'ofLastCenturies' => 'القرون الماضية',
     ],
     'Millenniums' => [
-        'label' => 'الألفيات',
+        'label' => 'الفية',
+        'plural_label' => 'الألفيات',
         'ofLastMillennium' => 'الألفية الماضية',
         'ofLastMillenniums' => 'الألفيات الماضية',
     ],
@@ -102,4 +113,9 @@ return [
 
     'INCLUSIVE' => 'مع',
     'EXCLUSIVE' => 'بدون',
+
+    'yes' => 'نعم',
+    'no' => 'لا',
+
+    "Include last" => "يتضمن اخر",
 ];

@@ -102,4 +102,9 @@ return [
 
     'INCLUSIVE' => 'Inclusive',
     'EXCLUSIVE' => 'Exclusive',
+
+    'yes' => 'yes',
+    'no' => 'no',
+
+    "Include last" => "Include last",
 ];
