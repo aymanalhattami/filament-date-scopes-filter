@@ -144,7 +144,7 @@ class DateScopeFilter extends Filter
             ScopeType::Second->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.Seconds.label'),
                 'scopes' => [
-//                    'secondToNow' => __('filament-date-scopes-filter::date-scope.Seconds.secondToNow'), // query transactions created during the start of the current second till now (equivalent of just now)
+                    //                    'secondToNow' => __('filament-date-scopes-filter::date-scope.Seconds.secondToNow'), // query transactions created during the start of the current second till now (equivalent of just now)
                     'ofJustNow' => __('filament-date-scopes-filter::date-scope.Seconds.ofJustNow'),
                     'ofLastSecond' => __('filament-date-scopes-filter::date-scope.Seconds.ofLastSecond'),
                     'ofLast15Seconds' => __('filament-date-scopes-filter::date-scope.Seconds.ofLast15Seconds'),
@@ -255,7 +255,7 @@ class DateScopeFilter extends Filter
                     'ofLastMillennium' => __('filament-date-scopes-filter::date-scope.Millenniums.ofLastMillennium'),
                     'ofLastMillenniums' => __('filament-date-scopes-filter::date-scope.Millenniums.ofLastMillenniums'),
                 ],
-            ]
+            ],
         ];
     }
 
