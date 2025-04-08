@@ -116,6 +116,9 @@ return [
         'ofLastMillennium' => 'الألفية الماضية',
         'ofLastMillenniums' => 'الألفيات الماضية',
     ],
+    'custom' => [
+        'custom' => 'مخصص',
+    ],
 
     'Number of' => 'عدد',
 
@@ -126,4 +129,6 @@ return [
     'no' => 'لا',
 
     'Include' => 'يتضمن',
+    'from_date' => 'من تأريخ',
+    'to_date' => 'الى تأريخ'
 ];

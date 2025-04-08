@@ -15,5 +15,5 @@ enum ScopeType: string
     case Decade = 'decade';
     case Century = 'century';
     case Millennium = 'millennium';
-    case ToNow = 'to_now';
+    case Custom = 'custom';
 }

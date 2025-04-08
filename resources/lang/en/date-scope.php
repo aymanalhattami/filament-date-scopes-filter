@@ -125,4 +125,7 @@ return [
     'no' => 'No',
 
     'Include' => 'Include',
+
+    'from_date' => 'From date',
+    'to_date' => 'To date'
 ];

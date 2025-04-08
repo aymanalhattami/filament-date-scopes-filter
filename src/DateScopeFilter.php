@@ -3,6 +3,8 @@
 namespace AymanAlhattami\FilamentDateScopesFilter;
 
 use Closure;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
@@ -60,6 +62,7 @@ class DateScopeFilter extends Filter
         'decadeToDate',
         'centuryToDate',
         'millenniumToDate',
+        'custom'
     ];
 
     public function withoutScopes(ScopeType|array|Closure $scope): static
@@ -126,11 +129,6 @@ class DateScopeFilter extends Filter
     public function withoutMillennium(): static
     {
         return $this->withoutScopes(ScopeType::Millennium);
-    }
-
-    public function withoutToNow(): static
-    {
-        return $this->withoutScopes(ScopeType::ToNow);
     }
 
     private function getWithoutScopes(): array
@@ -256,6 +254,12 @@ class DateScopeFilter extends Filter
                     'ofLastMillenniums' => __('filament-date-scopes-filter::date-scope.millenniums.ofLastMillenniums'),
                 ],
             ],
+            ScopeType::Custom->value => [
+                'label' => __('filament-date-scopes-filter::date-scope.custom.custom'),
+                'scopes' => [
+                    'custom' => __('filament-date-scopes-filter::date-scope.custom.custom'),
+                ],
+            ]
         ];
     }
 
@@ -309,23 +313,34 @@ class DateScopeFilter extends Filter
                 ->schema($this->getSearchFormFields())
                 ->visible(! $this->isWrapInFieldset()),
         ])->query(function (Builder $query, array $data) {
-            return $query->when($data[$this->getName()] ?? null, function ($query, $value) use ($data) {
-                if (in_array($value, $this->scopesRequireAdditionalParameters, true)) {
-                    $parameterValue = (! is_null($data['additional_parameter']) && (int) $data['additional_parameter'] >= 1)
-                        ? $data['additional_parameter']
-                        : 1;
-                    if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
-                        return $query->{$value}((int) $parameterValue, customRange: DateRange::tryFrom($data['range']));
+            return $query->when($data[$this->getName()] ?? null, function ($query, $scope) use ($data) {
+                $query->when($scope === ScopeType::Custom->value, function ($query) use ($data) {
+                    $query->when($data['from_date'] ?? null, function ($query, $fromDate) {
+                        $query->where($this->getName(), '>=', $fromDate);
+                    })->when($data['to_date'] ?? null, function ($query, $toDate) {
+                            $query->where($this->getName(), '<=', $toDate);
+                        });
+                });
+
+                $query->unless($data[$this->getName()] === ScopeType::Custom->value, function ($query, $value) use ($scope, $data) {
+                    // TODO refactor: use when instead of if
+                    if (in_array($scope, $this->scopesRequireAdditionalParameters, true)) {
+                        $parameterValue = (! is_null($data['additional_parameter']) && (int) $data['additional_parameter'] >= 1)
+                            ? $data['additional_parameter']
+                            : 1;
+                        if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
+                            return $query->{$scope}((int) $parameterValue, customRange: DateRange::tryFrom($data['range']));
+                        }
+
+                        return $query->{$scope}((int) $parameterValue);
                     }
 
-                    return $query->{$value}((int) $parameterValue);
-                }
+                    if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
+                        return $query->{$scope}(customRange: DateRange::tryFrom($data['range']));
+                    }
 
-                if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
-                    return $query->{$value}(customRange: DateRange::tryFrom($data['range']));
-                }
-
-                return $query->{$value}();
+                    return $query->{$scope}();
+                });
             });
         });
 
@@ -377,6 +392,12 @@ class DateScopeFilter extends Filter
                     return ! is_null($get($this->getName())) && ! in_array($get($this->getName()), $this->scopesDontSupportRange, true);
                 })
                 ->default(DateRange::EXCLUSIVE->value),
+            DatePicker::make('from_date')
+                ->visible(fn (Get $get) => $get($this->getName()) === ScopeType::Custom->value)
+                ->label(__('filament-date-scopes-filter::date-scope.from_date')),
+            DatePicker::make('to_date')
+                ->visible(fn (Get $get) => $get($this->getName()) === ScopeType::Custom->value)
+                ->label(__('filament-date-scopes-filter::date-scope.to_date'))
         ];
     }
 
