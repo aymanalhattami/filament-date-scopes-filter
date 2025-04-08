@@ -4,7 +4,6 @@ namespace AymanAlhattami\FilamentDateScopesFilter;
 
 use Closure;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
@@ -62,7 +61,7 @@ class DateScopeFilter extends Filter
         'decadeToDate',
         'centuryToDate',
         'millenniumToDate',
-        'custom'
+        'custom',
     ];
 
     public function withoutScopes(ScopeType|array|Closure $scope): static
@@ -259,7 +258,7 @@ class DateScopeFilter extends Filter
                 'scopes' => [
                     'custom' => __('filament-date-scopes-filter::date-scope.custom.custom'),
                 ],
-            ]
+            ],
         ];
     }
 
@@ -318,8 +317,8 @@ class DateScopeFilter extends Filter
                     $query->when($data['from_date'] ?? null, function ($query, $fromDate) {
                         $query->where($this->getName(), '>=', $fromDate);
                     })->when($data['to_date'] ?? null, function ($query, $toDate) {
-                            $query->where($this->getName(), '<=', $toDate);
-                        });
+                        $query->where($this->getName(), '<=', $toDate);
+                    });
                 });
 
                 $query->unless($data[$this->getName()] === ScopeType::Custom->value, function ($query, $value) use ($scope, $data) {
@@ -397,7 +396,7 @@ class DateScopeFilter extends Filter
                 ->label(__('filament-date-scopes-filter::date-scope.from_date')),
             DatePicker::make('to_date')
                 ->visible(fn (Get $get) => $get($this->getName()) === ScopeType::Custom->value)
-                ->label(__('filament-date-scopes-filter::date-scope.to_date'))
+                ->label(__('filament-date-scopes-filter::date-scope.to_date')),
         ];
     }
 
