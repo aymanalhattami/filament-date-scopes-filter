@@ -360,6 +360,7 @@ class DateScopeFilter extends Filter
     {
         return [
             Select::make($this->getName())
+                ->label($this->getLabel())
                 ->options($this->getEnabledScopesAsGroups())
                 ->searchable()
                 ->live(),
