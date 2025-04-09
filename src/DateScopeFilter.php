@@ -13,7 +13,6 @@ use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\Indicator;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Arr;
 use LaracraftTech\LaravelDateScopes\DateRange;
 
 class DateScopeFilter extends Filter
