@@ -13,6 +13,7 @@ use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\Indicator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 use LaracraftTech\LaravelDateScopes\DateRange;
 
 class DateScopeFilter extends Filter
@@ -312,29 +313,29 @@ class DateScopeFilter extends Filter
                 ->schema($this->getSearchFormFields())
                 ->visible(! $this->isWrapInFieldset()),
         ])->query(function (Builder $query, array $data) {
-            return $query->when($data[$this->getName()] ?? null, function ($query, $scope) use ($data) {
+            return $query->when($this->getNameValue($data) ?? null, function ($query, $scope) use ($data) {
                 $query->when($scope === ScopeType::Custom->value, function ($query) use ($data) {
                     $query->when($data['from_date'] ?? null, function ($query, $fromDate) {
-                        $query->where($this->getName(), '>=', $fromDate);
+                        $query->whereDate($this->getName(), '>=', $fromDate);
                     })->when($data['to_date'] ?? null, function ($query, $toDate) {
-                        $query->where($this->getName(), '<=', $toDate);
+                        $query->whereDate($this->getName(), '<=', $toDate);
                     });
                 });
 
-                $query->unless($data[$this->getName()] === ScopeType::Custom->value, function ($query, $value) use ($scope, $data) {
+                $query->unless($this->getNameValue($data) === ScopeType::Custom->value, function ($query, $value) use ($scope, $data) {
                     // TODO refactor: use when instead of if
                     if (in_array($scope, $this->scopesRequireAdditionalParameters, true)) {
                         $parameterValue = (! is_null($data['additional_parameter']) && (int) $data['additional_parameter'] >= 1)
                             ? $data['additional_parameter']
                             : 1;
-                        if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
+                        if (! in_array($this->getNameValue($data), $this->scopesDontSupportRange, true)) {
                             return $query->{$scope}((int) $parameterValue, customRange: DateRange::tryFrom($data['range']));
                         }
 
                         return $query->{$scope}((int) $parameterValue);
                     }
 
-                    if (! in_array($data[$this->getName()], $this->scopesDontSupportRange, true)) {
+                    if (! in_array($this->getNameValue($data), $this->scopesDontSupportRange, true)) {
                         return $query->{$scope}(customRange: DateRange::tryFrom($data['range']));
                     }
 
@@ -346,9 +347,9 @@ class DateScopeFilter extends Filter
         $this->indicateUsing(function (array $data): array {
             $indicators = [];
 
-            if ($data[$this->getName()] ?? null) {
+            if ($this->getNameValue($data) ?? null) {
                 $label = $this->getLabel();
-                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($data[$this->getName()]))
+                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($this->getNameValue($data)))
                     ->removeField($this->getName());
             }
 
@@ -363,7 +364,8 @@ class DateScopeFilter extends Filter
                 ->label($this->getLabel())
                 ->options($this->getEnabledScopesAsGroups())
                 ->searchable()
-                ->live(),
+                ->live()
+                ->default($this->getDefaultState()),
             TextInput::make('additional_parameter')
                 ->label(function (Get $get) {
                     $words = preg_split('/(?=[A-Z])/', $get($this->getName()), -1, PREG_SPLIT_NO_EMPTY);
@@ -410,5 +412,23 @@ class DateScopeFilter extends Filter
         }
 
         return null;
+    }
+
+    private function getNameValue(array $data): ?string
+    {
+        $keys = explode('.', $this->getName());
+
+        $value = $data;
+
+        foreach ($keys as $key) {
+            if (isset($value[$key])) {
+                $value = $value[$key];
+            } else {
+                $value = null;
+                break;
+            }
+        }
+
+        return $value;
     }
 }
