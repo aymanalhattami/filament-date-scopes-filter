@@ -13,7 +13,6 @@ use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\Indicator;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Arr;
 use LaracraftTech\LaravelDateScopes\DateRange;
 
 class DateScopeFilter extends Filter
@@ -203,7 +202,7 @@ class DateScopeFilter extends Filter
 
     public function withoutCustom(): static
     {
-        return $this->withoutScopes(DateScope::Custom,);
+        return $this->withoutScopes(DateScope::Custom);
     }
 
     private function getWithoutScopes(): array
@@ -350,7 +349,7 @@ class DateScopeFilter extends Filter
                 }
             }
 
-            $enabledScopes[__('filament-date-scopes-filter::date-scope.' . $groupName . '.plural_label')] = $groupScopes;
+            $enabledScopes[__('filament-date-scopes-filter::date-scope.'.$groupName.'.plural_label')] = $groupScopes;
         }
 
         return $enabledScopes;
@@ -413,17 +412,17 @@ class DateScopeFilter extends Filter
             });
         });
 
-//        $this->indicateUsing(function (array $data): array {
-//            $indicators = [];
-//
-//            if ($this->getNameValue($data) ?? null) {
-//                $label = $this->getLabel();
-//                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($this->getNameValue($data)))
-//                    ->removeField($this->getName());
-//            }
-//
-//            return $indicators;
-//        });
+        //        $this->indicateUsing(function (array $data): array {
+        //            $indicators = [];
+        //
+        //            if ($this->getNameValue($data) ?? null) {
+        //                $label = $this->getLabel();
+        //                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($this->getNameValue($data)))
+        //                    ->removeField($this->getName());
+        //            }
+        //
+        //            return $indicators;
+        //        });
     }
 
     private function getSearchFormFields(): array

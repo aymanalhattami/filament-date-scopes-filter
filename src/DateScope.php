@@ -12,7 +12,6 @@ enum DateScope: string
     case OfLast60Seconds = 'ofLast60Seconds';
     case OfLastSeconds = 'ofLastSeconds';
 
-
     case MinuteToNow = 'minuteToNow';
     case OfLastMinute = 'ofLastMinute';
     case OfLast15Minutes = 'ofLast15Minutes';
@@ -20,7 +19,6 @@ enum DateScope: string
     case OfLast45Minutes = 'ofLast45Minutes';
     case OfLast60Minutes = 'ofLast60Minutes';
     case OfLastMinutes = 'ofLastMinutes';
-
 
     case HourToNow = 'hourToNow';
     case OfLastHour = 'ofLastHour';
@@ -30,7 +28,6 @@ enum DateScope: string
     case OfLast24Hours = 'ofLast24Hours';
     case OfLastHours = 'ofLastHours';
 
-
     case DayToNow = 'dayToNow';
     case OfToday = 'ofToday';
     case OfYesterday = 'ofYesterday';
@@ -39,14 +36,12 @@ enum DateScope: string
     case OfLast30Days = 'ofLast30Days';
     case OfLastDays = 'ofLastDays';
 
-
     case WeekToDate = 'weekToDate';
     case OfLastWeek = 'ofLastWeek';
     case OfLast2Weeks = 'ofLast2Weeks';
     case OfLast3Weeks = 'ofLast3Weeks';
     case OfLast4Weeks = 'ofLast4Weeks';
     case OfLastWeeks = 'ofLastWeeks';
-
 
     case MonthToDate = 'monthToDate';
     case OfLastMonth = 'ofLastMonth';
@@ -56,7 +51,6 @@ enum DateScope: string
     case OfLast12Months = 'ofLast12Months';
     case OfLastMonths = 'ofLastMonths';
 
-
     case QuarterToDate = 'quarterToDate';
     case OfLastQuarter = 'ofLastQuarter';
     case OfLast2Quarters = 'ofLast2Quarters';
@@ -64,26 +58,21 @@ enum DateScope: string
     case OfLast4Quarters = 'ofLast4Quarters';
     case OfLastQuarters = 'ofLastQuarters';
 
-
     case YearToDate = 'yearToDate';
     case OfLastYear = 'ofLastYear';
     case OfLastYears = 'ofLastYears';
-
 
     case DecadeToDate = 'decadeToDate';
     case OfLastDecade = 'ofLastDecade';
     case OfLastDecades = 'ofLastDecades';
 
-
     case CenturyToDate = 'centuryToDate';
     case OfLastCentury = 'ofLastCentury';
     case OfLastCenturies = 'ofLastCenturies';
 
-
     case MillenniumToDate = 'millenniumToDate';
     case OfLastMillennium = 'ofLastMillennium';
     case OfLastMillenniums = 'ofLastMillenniums';
-
 
     case Custom = 'custom';
 }
