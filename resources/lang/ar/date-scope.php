@@ -118,6 +118,8 @@ return [
     ],
     'custom' => [
         'custom' => 'مخصص',
+        'label' => 'مخصص',
+        'plural_label' => 'مخصص',
     ],
 
     'Number of' => 'عدد',

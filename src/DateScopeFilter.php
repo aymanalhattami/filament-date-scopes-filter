@@ -214,11 +214,11 @@ class DateScopeFilter extends Filter
     private function getAllScopes(): array
     {
         return [
-            ScopeType::Second->value => [
+            ScopeGroup::Seconds->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.seconds.label'),
                 'scopes' => [
                     //                    'secondToNow' => __('filament-date-scopes-filter::date-scope.seconds.secondToNow'), // query transactions created during the start of the current second till now (equivalent of just now)
-                    'ofJustNow' => __('filament-date-scopes-filter::date-scope.seconds.ofJustNow'),
+                    DateScope::OfJustNow->value => __('filament-date-scopes-filter::date-scope.seconds.ofJustNow'),
                     'ofLastSecond' => __('filament-date-scopes-filter::date-scope.seconds.ofLastSecond'),
                     'ofLast15Seconds' => __('filament-date-scopes-filter::date-scope.seconds.ofLast15Seconds'),
                     'ofLast30Seconds' => __('filament-date-scopes-filter::date-scope.seconds.ofLast30Seconds'),
@@ -227,7 +227,7 @@ class DateScopeFilter extends Filter
                     'ofLastSeconds' => __('filament-date-scopes-filter::date-scope.seconds.ofLastSeconds'),
                 ],
             ],
-            ScopeType::Minute->value => [
+            ScopeGroup::Minutes->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.minutes.label'),
                 'scopes' => [
                     'minuteToNow' => __('filament-date-scopes-filter::date-scope.minutes.minuteToNow'),
@@ -239,7 +239,7 @@ class DateScopeFilter extends Filter
                     'ofLastMinutes' => __('filament-date-scopes-filter::date-scope.minutes.ofLastMinutes'),
                 ],
             ],
-            ScopeType::Hour->value => [
+            ScopeGroup::Hours->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.hours.label'),
                 'scopes' => [
                     'hourToNow' => __('filament-date-scopes-filter::date-scope.hours.hourToNow'),
@@ -251,7 +251,7 @@ class DateScopeFilter extends Filter
                     'ofLastHours' => __('filament-date-scopes-filter::date-scope.hours.ofLastHours'),
                 ],
             ],
-            ScopeType::Day->value => [
+            ScopeGroup::Days->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.days.label'),
                 'scopes' => [
                     'dayToNow' => __('filament-date-scopes-filter::date-scope.days.dayToNow'),
@@ -263,7 +263,7 @@ class DateScopeFilter extends Filter
                     'ofLastDays' => __('filament-date-scopes-filter::date-scope.days.ofLastDays'),
                 ],
             ],
-            ScopeType::Week->value => [
+            ScopeGroup::Weeks->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.weeks.label'),
                 'scopes' => [
                     'weekToDate' => __('filament-date-scopes-filter::date-scope.weeks.weekToDate'),
@@ -274,7 +274,7 @@ class DateScopeFilter extends Filter
                     'ofLastWeeks' => __('filament-date-scopes-filter::date-scope.weeks.ofLastWeeks'),
                 ],
             ],
-            ScopeType::Month->value => [
+            ScopeGroup::Months->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.months.label'),
                 'scopes' => [
                     'monthToDate' => __('filament-date-scopes-filter::date-scope.months.monthToDate'),
@@ -286,7 +286,7 @@ class DateScopeFilter extends Filter
                     'ofLastMonths' => __('filament-date-scopes-filter::date-scope.months.ofLastMonths'),
                 ],
             ],
-            ScopeType::Quarter->value => [
+            ScopeGroup::Quarters->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.quarters.label'),
                 'scopes' => [
                     'quarterToDate' => __('filament-date-scopes-filter::date-scope.quarters.quarterToDate'),
@@ -297,7 +297,7 @@ class DateScopeFilter extends Filter
                     'ofLastQuarters' => __('filament-date-scopes-filter::date-scope.quarters.ofLastQuarters'),
                 ],
             ],
-            ScopeType::Year->value => [
+            ScopeGroup::Years->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.years.label'),
                 'scopes' => [
                     'yearToDate' => __('filament-date-scopes-filter::date-scope.years.yearToDate'),
@@ -305,7 +305,7 @@ class DateScopeFilter extends Filter
                     'ofLastYears' => __('filament-date-scopes-filter::date-scope.years.ofLastYears'),
                 ],
             ],
-            ScopeType::Decade->value => [
+            ScopeGroup::Decades->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.decades.label'),
                 'scopes' => [
                     'decadeToDate' => __('filament-date-scopes-filter::date-scope.decades.decadeToDate'),
@@ -313,7 +313,7 @@ class DateScopeFilter extends Filter
                     'ofLastDecades' => __('filament-date-scopes-filter::date-scope.decades.ofLastDecades'),
                 ],
             ],
-            ScopeType::Century->value => [
+            ScopeGroup::Centuries->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.centuries.label'),
                 'scopes' => [
                     'centuryToDate' => __('filament-date-scopes-filter::date-scope.centuries.centuryToDate'),
@@ -321,7 +321,7 @@ class DateScopeFilter extends Filter
                     'ofLastCenturies' => __('filament-date-scopes-filter::date-scope.centuries.ofLastCenturies'),
                 ],
             ],
-            ScopeType::Millennium->value => [
+            ScopeGroup::Millenniums->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.millenniums.label'),
                 'scopes' => [
                     'millenniumToDate' => __('filament-date-scopes-filter::date-scope.millenniums.millenniumToDate'),
@@ -329,7 +329,7 @@ class DateScopeFilter extends Filter
                     'ofLastMillenniums' => __('filament-date-scopes-filter::date-scope.millenniums.ofLastMillenniums'),
                 ],
             ],
-            ScopeType::Custom->value => [
+            ScopeGroup::Custom->value => [
                 'label' => __('filament-date-scopes-filter::date-scope.custom.custom'),
                 'scopes' => [
                     'custom' => __('filament-date-scopes-filter::date-scope.custom.custom'),
@@ -342,12 +342,15 @@ class DateScopeFilter extends Filter
     {
         $enabledScopes = [];
 
-        foreach ($this->getAllScopes() as $scopes) {
-            foreach ($scopes['scopes'] as $key => $scope) {
-                if (! in_array(DateScope::tryFrom($key), $this->getWithoutScopes(), true)) {
-                    $enabledScopes[] = $scope;
+        foreach ($this->getAllScopes() as $groupName => $scopes) {
+            $groupScopes = [];
+            foreach ($scopes['scopes'] as $scopeName => $scopeValue) {
+                if (! in_array(DateScope::tryFrom($scopeName), $this->getWithoutScopes(), true)) {
+                    $groupScopes[] = $scopeValue;
                 }
             }
+
+            $enabledScopes[__('filament-date-scopes-filter::date-scope.' . $groupName . '.plural_label')] = $groupScopes;
         }
 
         return $enabledScopes;
@@ -380,7 +383,7 @@ class DateScopeFilter extends Filter
                 ->visible(! $this->isWrapInFieldset()),
         ])->query(function (Builder $query, array $data) {
             return $query->when($this->getNameValue($data) ?? null, function ($query, $scope) use ($data) {
-                $query->when($scope === ScopeType::Custom->value, function ($query) use ($data) {
+                $query->when($scope === ScopeGroup::Custom->value, function ($query) use ($data) {
                     $query->when($data['from_date'] ?? null, function ($query, $fromDate) {
                         $query->whereDate($this->getName(), '>=', $fromDate);
                     })->when($data['to_date'] ?? null, function ($query, $toDate) {
@@ -388,7 +391,7 @@ class DateScopeFilter extends Filter
                     });
                 });
 
-                $query->unless($this->getNameValue($data) === ScopeType::Custom->value, function ($query, $value) use ($scope, $data) {
+                $query->unless($this->getNameValue($data) === ScopeGroup::Custom->value, function ($query, $value) use ($scope, $data) {
                     // TODO refactor: use when instead of if
                     if (in_array($scope, $this->scopesRequireAdditionalParameters, true)) {
                         $parameterValue = (! is_null($data['additional_parameter']) && (int) $data['additional_parameter'] >= 1)
@@ -461,10 +464,10 @@ class DateScopeFilter extends Filter
                 })
                 ->default(DateRange::EXCLUSIVE->value),
             DatePicker::make('from_date')
-                ->visible(fn (Get $get) => $get($this->getName()) === ScopeType::Custom->value)
+                ->visible(fn (Get $get) => $get($this->getName()) === ScopeGroup::Custom->value)
                 ->label(__('filament-date-scopes-filter::date-scope.from_date')),
             DatePicker::make('to_date')
-                ->visible(fn (Get $get) => $get($this->getName()) === ScopeType::Custom->value)
+                ->visible(fn (Get $get) => $get($this->getName()) === ScopeGroup::Custom->value)
                 ->label(__('filament-date-scopes-filter::date-scope.to_date')),
         ];
     }
