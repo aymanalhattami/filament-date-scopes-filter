@@ -65,70 +65,145 @@ class DateScopeFilter extends Filter
         'custom',
     ];
 
-    public function withoutScopes(ScopeType|array|Closure $scope): static
+    public function withoutScopes(DateScope|array|Closure $scope): static
     {
-        if ($scope instanceof ScopeType || $scope instanceof Closure) {
+        if ($scope instanceof DateScope || $scope instanceof Closure) {
             $this->withoutScopes[] = $scope;
-        } elseif (is_array($scope)) {
+        } else {
             $this->withoutScopes = array_merge($this->withoutScopes, $scope);
         }
 
         return $this;
     }
 
-    public function withoutSecond(): static
+    public function withoutSeconds(): static
     {
-        return $this->withoutScopes(ScopeType::Second);
+        return $this->withoutScopes([
+            DateScope::OfJustNow,
+            DateScope::OfLastSecond,
+            DateScope::OfLast15Seconds,
+            DateScope::OfLast30Seconds,
+            DateScope::OfLast45Seconds,
+            DateScope::OfLast60Seconds,
+            DateScope::OfLastSeconds,
+        ]);
     }
 
-    public function withoutMinute(): static
+    public function withoutMinutes(): static
     {
-        return $this->withoutScopes(ScopeType::Minute);
+        return $this->withoutScopes([
+            DateScope::MinuteToNow,
+            DateScope::OfLastMinute,
+            DateScope::OfLast15Minutes,
+            DateScope::OfLast30Minutes,
+            DateScope::OfLast45Minutes,
+            DateScope::OfLast60Minutes,
+            DateScope::OfLastMinutes,
+        ]);
     }
 
-    public function withoutHour(): static
+    public function withoutHours(): static
     {
-        return $this->withoutScopes(ScopeType::Hour);
+        return $this->withoutScopes([
+            DateScope::HourToNow,
+            DateScope::OfLastHour,
+            DateScope::OfLast6Hours,
+            DateScope::OfLast12Hours,
+            DateScope::OfLast18Hours,
+            DateScope::OfLast24Hours,
+            DateScope::OfLastHours,
+        ]);
     }
 
-    public function withoutDay(): static
+    public function withoutDays(): static
     {
-        return $this->withoutScopes(ScopeType::Day);
+        return $this->withoutScopes([
+            DateScope::DayToNow,
+            DateScope::OfToday,
+            DateScope::OfYesterday,
+            DateScope::OfLast7Days,
+            DateScope::OfLast21Days,
+            DateScope::OfLast30Days,
+            DateScope::OfLastDays,
+        ]);
     }
 
-    public function withoutWeek(): static
+    public function withoutWeeks(): static
     {
-        return $this->withoutScopes(ScopeType::Week);
+        return $this->withoutScopes([
+            DateScope::WeekToDate,
+            DateScope::OfLastWeek,
+            DateScope::OfLast2Weeks,
+            DateScope::OfLast3Weeks,
+            DateScope::OfLast4Weeks,
+            DateScope::OfLastWeeks,
+        ]);
     }
 
-    public function withoutMonth(): static
+    public function withoutMonths(): static
     {
-        return $this->withoutScopes(ScopeType::Month);
+        return $this->withoutScopes([
+            DateScope::MonthToDate,
+            DateScope::OfLastMonth,
+            DateScope::OfLast3Months,
+            DateScope::OfLast6Months,
+            DateScope::OfLast9Months,
+            DateScope::OfLast12Months,
+            DateScope::OfLastMonths,
+        ]);
     }
 
-    public function withoutQuarter(): static
+    public function withoutQuarters(): static
     {
-        return $this->withoutScopes(ScopeType::Quarter);
+        return $this->withoutScopes([
+            DateScope::QuarterToDate,
+            DateScope::OfLastQuarter,
+            DateScope::OfLast2Quarters,
+            DateScope::OfLast3Quarters,
+            DateScope::OfLast4Quarters,
+            DateScope::OfLastQuarters,
+        ]);
     }
 
-    public function withoutYear(): static
+    public function withoutYears(): static
     {
-        return $this->withoutScopes(ScopeType::Year);
+        return $this->withoutScopes([
+            DateScope::YearToDate,
+            DateScope::OfLastYear,
+            DateScope::OfLastYears,
+        ]);
     }
 
-    public function withoutDecade(): static
+    public function withoutDecades(): static
     {
-        return $this->withoutScopes(ScopeType::Decade);
+        return $this->withoutScopes([
+            DateScope::DecadeToDate,
+            DateScope::OfLastDecade,
+            DateScope::OfLastDecades,
+        ]);
     }
 
-    public function withoutCentury(): static
+    public function withoutCenturies(): static
     {
-        return $this->withoutScopes(ScopeType::Century);
+        return $this->withoutScopes([
+            DateScope::CenturyToDate,
+            DateScope::OfLastCentury,
+            DateScope::OfLastCenturies,
+        ]);
     }
 
-    public function withoutMillennium(): static
+    public function withoutMillenniums(): static
     {
-        return $this->withoutScopes(ScopeType::Millennium);
+        return $this->withoutScopes([
+            DateScope::MillenniumToDate,
+            DateScope::OfLastMillennium,
+            DateScope::OfLastMillenniums,
+        ]);
+    }
+
+    public function withoutCustom(): static
+    {
+        return $this->withoutScopes(DateScope::Custom,);
     }
 
     private function getWithoutScopes(): array
@@ -263,28 +338,19 @@ class DateScopeFilter extends Filter
         ];
     }
 
-    private function getEnabledScopes(): array
+    private function getEnabledScopesAsGroups(): array
     {
         $enabledScopes = [];
 
-        foreach ($this->getAllScopes() as $key => $scope) {
-            if (! in_array(ScopeType::tryFrom($key), $this->getWithoutScopes(), true)) {
-                $enabledScopes[] = $scope;
+        foreach ($this->getAllScopes() as $scopes) {
+            foreach ($scopes['scopes'] as $key => $scope) {
+                if (! in_array(DateScope::tryFrom($key), $this->getWithoutScopes(), true)) {
+                    $enabledScopes[] = $scope;
+                }
             }
         }
 
         return $enabledScopes;
-    }
-
-    private function getEnabledScopesAsGroups(): array
-    {
-        $scopes = [];
-
-        foreach ($this->getEnabledScopes() as $scope) {
-            $scopes[$scope['label']] = $scope['scopes'];
-        }
-
-        return $scopes;
     }
 
     public function wrapInFieldset($value = true): static
@@ -344,17 +410,17 @@ class DateScopeFilter extends Filter
             });
         });
 
-        $this->indicateUsing(function (array $data): array {
-            $indicators = [];
-
-            if ($this->getNameValue($data) ?? null) {
-                $label = $this->getLabel();
-                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($this->getNameValue($data)))
-                    ->removeField($this->getName());
-            }
-
-            return $indicators;
-        });
+//        $this->indicateUsing(function (array $data): array {
+//            $indicators = [];
+//
+//            if ($this->getNameValue($data) ?? null) {
+//                $label = $this->getLabel();
+//                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($this->getNameValue($data)))
+//                    ->removeField($this->getName());
+//            }
+//
+//            return $indicators;
+//        });
     }
 
     private function getSearchFormFields(): array

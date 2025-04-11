@@ -20,8 +20,6 @@ composer require aymanalhattami/filament-date-scopes-filter
 
 ## Usage
 
-
-
 ```php
 use AymanAlhattami\FilamentDateScopesFIlter\DateScopeFilter;
 
@@ -31,6 +29,34 @@ public static function table(Table $table): Table
     return $table
         ->filters([
             DateScopeFilter::make('created_at'),
+        ])
+    // ...
+}
+// ...
+```
+
+#### More configuration
+
+```php
+use AymanAlhattami\FilamentDateScopesFIlter\DateScopeFilter;
+
+// ...
+public static function table(Table $table): Table
+{
+    return $table
+        ->filters([
+            DateScopeFilter::make('created_at')
+            ->withoutSeconds()
+            ->withoutMinutes()
+            ->withoutHours()
+            ->withoutDays()
+            ->withoutWeeks()
+            ->withoutMonths()
+            ->withoutQuarters()
+            ->withoutYears()
+            ->withoutDecades()
+            ->withoutCenturies()
+            ->withoutMillenniums(),
         ])
     // ...
 }
