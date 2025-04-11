@@ -346,7 +346,7 @@ class DateScopeFilter extends Filter
             $groupScopes = [];
             foreach ($scopes['scopes'] as $scopeName => $scopeValue) {
                 if (! in_array(DateScope::tryFrom($scopeName), $this->getWithoutScopes(), true)) {
-                    $groupScopes[] = $scopeValue;
+                    $groupScopes[$scopeName] = $scopeValue;
                 }
             }
 
