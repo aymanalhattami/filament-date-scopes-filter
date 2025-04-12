@@ -46,17 +46,17 @@ public static function table(Table $table): Table
     return $table
         ->filters([
             DateScopeFilter::make('created_at')
-            ->withoutSeconds()
-            ->withoutMinutes()
-            ->withoutHours()
-            ->withoutDays()
-            ->withoutWeeks()
-            ->withoutMonths()
-            ->withoutQuarters()
-            ->withoutYears()
-            ->withoutDecades()
-            ->withoutCenturies()
-            ->withoutMillenniums(),
+                ->withoutSeconds() // ex
+                ->withoutMinutes()
+                ->withoutHours()
+                ->withoutDays()
+                ->withoutWeeks()
+                ->withoutMonths()
+                ->withoutQuarters()
+                ->withoutYears()
+                ->withoutDecades()
+                ->withoutCenturies()
+                ->withoutMillenniums(),
         ])
     // ...
 }
