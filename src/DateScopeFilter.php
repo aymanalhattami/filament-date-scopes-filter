@@ -412,17 +412,17 @@ class DateScopeFilter extends Filter
             });
         });
 
-        //        $this->indicateUsing(function (array $data): array {
-        //            $indicators = [];
-        //
-        //            if ($this->getNameValue($data) ?? null) {
-        //                $label = $this->getLabel();
-        //                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($this->getNameValue($data)))
-        //                    ->removeField($this->getName());
-        //            }
-        //
-        //            return $indicators;
-        //        });
+        $this->indicateUsing(function (array $data): array {
+            $indicators = [];
+
+            if ($this->getNameValue($data) ?? null) {
+                $label = $this->getLabel();
+                $indicators[] = Indicator::make($label.' : '.$this->getScopeValue($this->getNameValue($data)))
+                    ->removeField($this->getName());
+            }
+
+            return $indicators;
+        });
     }
 
     private function getSearchFormFields(): array
