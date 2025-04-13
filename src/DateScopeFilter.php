@@ -19,7 +19,6 @@ class DateScopeFilter extends Filter
 {
     protected bool|Closure $wrapInFieldset = false;
 
-    /** @var array|Closure <int, ScopeType> */
     protected array|Closure $withoutScopes = [];
 
     private array $scopesRequireAdditionalParameters = [
