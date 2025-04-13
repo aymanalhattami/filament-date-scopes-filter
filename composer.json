@@ -60,7 +60,7 @@
             ]
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "vcs",
