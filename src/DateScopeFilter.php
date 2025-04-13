@@ -407,7 +407,7 @@ class DateScopeFilter extends Filter
                         return $query->{$scope}(customRange: DateRange::tryFrom($data['range']));
                     }
 
-                    return $query->{$scope}();
+                    return $query->{$scope}(column: $this->getName());
                 });
             });
         });

@@ -22,7 +22,7 @@
         "php": "^8.1|^8.2|^8.3",
         "filament/forms": "^3.0",
         "filament/tables": "^3.0",
-        "laracraft-tech/laravel-date-scopes": "^2.0",
+        "laracraft-tech/laravel-date-scopes": "dev-main",
         "spatie/laravel-package-tools": "^1.0"
     },
     "require-dev": {
@@ -60,5 +60,11 @@
             ]
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/aymanalhattami/laravel-date-scopes"
+        }
+    ]
 }
