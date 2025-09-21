@@ -2,10 +2,10 @@
 
 namespace AymanAlhattami\FilamentDateScopesFilter;
 
-use Filament\Forms\Components\Grid;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Get;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\Indicator;
 use Illuminate\Database\Eloquent\Builder;
@@ -157,7 +157,7 @@ class DateScopeFilter extends Filter
     {
         parent::setUp();
 
-        $this->form(fn () => [
+        $this->schema(fn () => [
             Grid::make($this->getColumns())->schema([
                 Select::make($this->getName())
                     ->options($this->scopes())
