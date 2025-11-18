@@ -1,8 +1,11 @@
 <?php
 
 return [
-    'Seconds' => [
-        'label' => 'ثواني',
+    'seconds' => [
+        'label' => 'ثانية',
+        'plural_label' => 'الثواني',
+        'current' => 'الثانية الحالية',
+        'secondToNow' => 'الثانية حتى الآن',
         'ofJustNow' => 'الآن',
         'ofLastSecond' => 'الثانية الماضية',
         'ofLast15Seconds' => 'آخر 15 ثانية',
@@ -11,8 +14,11 @@ return [
         'ofLast60Seconds' => 'آخر 60 ثانية',
         'ofLastSeconds' => 'الثواني الماضية',
     ],
-    'Minutes' => [
-        'label' => 'الدقائق',
+    'minutes' => [
+        'label' => 'دقيقة',
+        'plural_label' => 'الدقائق',
+        'minuteToNow' => 'الدقيقة حتى الآن',
+        'current' => 'الدقيقة الحالية',
         'ofLastMinute' => 'الدقيقة الماضية',
         'ofLast15Minutes' => 'آخر 15 دقيقة',
         'ofLast30Minutes' => 'آخر 30 دقيقة',
@@ -20,8 +26,11 @@ return [
         'ofLast60Minutes' => 'آخر 60 دقيقة',
         'ofLastMinutes' => 'الدقائق الماضية',
     ],
-    'Hours' => [
-        'label' => 'الساعات',
+    'hours' => [
+        'label' => 'ساعة',
+        'plural_label' => 'الساعات',
+        'current' => 'الساعة الحالية',
+        'hourToNow' => 'الساعة حتى الآن',
         'ofLastHour' => 'الساعة الماضية',
         'ofLast6Hours' => 'آخر 6 ساعات',
         'ofLast12Hours' => 'آخر 12 ساعة',
@@ -29,8 +38,11 @@ return [
         'ofLast24Hours' => 'آخر 24 ساعة',
         'ofLastHours' => 'الساعات الماضية',
     ],
-    'Days' => [
-        'label' => 'الأيام',
+    'days' => [
+        'label' => 'يوم',
+        'plural_label' => 'الأيام',
+        'current' => 'اليوم الحالي',
+        'dayToNow' => 'اليوم حتى الآن',
         'ofToday' => 'اليوم',
         'ofYesterday' => 'أمس',
         'ofLast7Days' => 'آخر 7 أيام',
@@ -38,16 +50,22 @@ return [
         'ofLast30Days' => 'آخر 30 يوماً',
         'ofLastDays' => 'الأيام الماضية',
     ],
-    'Weeks' => [
-        'label' => 'الأسابيع',
+    'weeks' => [
+        'label' => 'اسبوع',
+        'plural_label' => 'الأسابيع',
+        'current' => 'الاسبوع الحالي',
+        'weekToDate' => 'الأسبوع حتى اليوم',
         'ofLastWeek' => 'الأسبوع الماضي',
         'ofLast2Weeks' => 'آخر أسبوعين',
         'ofLast3Weeks' => 'آخر 3 أسابيع',
         'ofLast4Weeks' => 'آخر 4 أسابيع',
         'ofLastWeeks' => 'الأسابيع الماضية',
     ],
-    'Months' => [
-        'label' => 'الأشهر',
+    'months' => [
+        'label' => 'شهر',
+        'plural_label' => 'الأشهر',
+        'current' => 'الشهر الحالي',
+        'monthToDate' => 'الشهر حتى اليوم',
         'ofLastMonth' => 'الشهر الماضي',
         'ofLast3Months' => 'آخر 3 أشهر',
         'ofLast6Months' => 'آخر 6 أشهر',
@@ -55,46 +73,64 @@ return [
         'ofLast12Months' => 'آخر 12 شهراً',
         'ofLastMonths' => 'الأشهر الماضية',
     ],
-    'Quarters' => [
-        'label' => 'الأرباع',
+    'quarters' => [
+        'label' => 'ربع',
+        'plural_label' => 'الأرباع',
+        'current' => 'الربع الحالي',
+        'quarterToDate' => 'الربع حتى اليوم',
         'ofLastQuarter' => 'الربع الماضي',
         'ofLast2Quarters' => 'آخر ربعين',
         'ofLast3Quarters' => 'آخر 3 أرباع',
         'ofLast4Quarters' => 'آخر 4 أرباع',
         'ofLastQuarters' => 'الأرباع الماضية',
     ],
-    'Years' => [
-        'label' => 'السنوات',
+    'years' => [
+        'label' => 'سنة',
+        'plural_label' => 'السنوات',
+        'current' => 'السنة الحالية',
+        'yearToDate' => 'السنة حتى اليوم',
         'ofLastYear' => 'العام الماضي',
         'ofLastYears' => 'السنوات الماضية',
     ],
-    'Decades' => [
-        'label' => 'العقود',
+    'decades' => [
+        'label' => 'عقد',
+        'plural_label' => 'العقود',
+        'current' => 'العقد الحالي',
+        'decadeToDate' => 'العقد حتى اليوم',
         'ofLastDecade' => 'العقد الماضي',
         'ofLastDecades' => 'العقود الماضية',
     ],
-    'Centuries' => [
-        'label' => 'القرون',
+    'centuries' => [
+        'label' => 'قرن',
+        'plural_label' => 'القرون',
+        'current' => 'القرن الحالي',
+        'centuryToDate' => 'القرن حتى اليوم',
         'ofLastCentury' => 'القرن الماضي',
         'ofLastCenturies' => 'القرون الماضية',
     ],
-    'Millenniums' => [
-        'label' => 'الألفيات',
+    'millenniums' => [
+        'label' => 'الفية',
+        'plural_label' => 'الألفيات',
+        'current' => 'الالفية الحالية',
+        'millenniumToDate' => 'الألفية حتى اليوم',
         'ofLastMillennium' => 'الألفية الماضية',
         'ofLastMillenniums' => 'الألفيات الماضية',
     ],
-    'toNow/toDate' => [
-        'label' => 'حتى الآن / حتى اليوم',
-        'secondToNow' => 'الثانية حتى الآن',
-        'minuteToNow' => 'الدقيقة حتى الآن',
-        'hourToNow' => 'الساعة حتى الآن',
-        'dayToNow' => 'اليوم حتى الآن',
-        'weekToDate' => 'الأسبوع حتى اليوم',
-        'monthToDate' => 'الشهر حتى اليوم',
-        'quarterToDate' => 'الربع حتى اليوم',
-        'yearToDate' => 'السنة حتى اليوم',
-        'decadeToDate' => 'العقد حتى اليوم',
-        'centuryToDate' => 'القرن حتى اليوم',
-        'millenniumToDate' => 'الألفية حتى اليوم',
+    'custom' => [
+        'custom' => 'مخصص',
+        'label' => 'مخصص',
+        'plural_label' => 'مخصص',
     ],
+
+    'Number of' => 'عدد',
+
+    'INCLUSIVE' => 'مع',
+    'EXCLUSIVE' => 'بدون',
+
+    'yes' => 'نعم',
+    'no' => 'لا',
+
+    'Include' => 'يتضمن',
+    'from_date' => 'من تأريخ',
+    'to_date' => 'الى تأريخ',
 ];
