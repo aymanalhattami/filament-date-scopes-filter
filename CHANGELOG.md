@@ -2,6 +2,25 @@
 
 All notable changes to `filament-date-scopes-filter` will be documented in this file
 
+## 2.0.1 - 2026-05-25
+
+### What's Changed
+
+* chore(deps): bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/20
+* chore(deps): bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/21
+* chore(deps): bump dependabot/fetch-metadata from 3.0.0 to 3.1.0 by @dependabot[bot] in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/22
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-date-scopes-filter/compare/2.0.0...2.0.1
+
+### What's Changed
+
+* chore(deps): bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/20
+* chore(deps): bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/21
+* chore(deps): bump dependabot/fetch-metadata from 3.0.0 to 3.1.0 by @dependabot[bot] in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/22
+* feat: add support for PHP 8.4/8.5 and Filament 5.0 by @aymanalhattami in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/23
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-date-scopes-filter/compare/2.0.0...2.0.1
+
 ## 2.0.0 - 2026-01-23
 
 ### What's Changed
