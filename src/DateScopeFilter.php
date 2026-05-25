@@ -3,8 +3,11 @@
 namespace AymanAlhattami\FilamentDateScopesFilter;
 
 use Closure;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
+use Filament\Schemas\Components\Fieldset;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Tables\Filters\Filter;
@@ -367,13 +370,12 @@ class DateScopeFilter extends Filter
     {
         parent::setUp();
 
-        $this->form(fn () => [
+        $this->schema(fn () => [
             Fieldset::make($this->getName())
                 ->label($this->getLabel())
                 ->schema($this->getSearchFormFields())
                 ->visible($this->isWrapInFieldset()),
             Grid::make($this->getColumns())
-                ->label($this->getLabel())
                 ->schema($this->getSearchFormFields())
                 ->visible(! $this->isWrapInFieldset()),
         ])->query(function (Builder $query, array $data) {
