@@ -2,6 +2,14 @@
 
 All notable changes to `filament-date-scopes-filter` will be documented in this file
 
+## 2.0.2 - 2026-05-25
+
+### What's Changed
+
+* Fix imports and refactor DateScopeFilter methods by @aymanalhattami in https://github.com/aymanalhattami/filament-date-scopes-filter/pull/24
+
+**Full Changelog**: https://github.com/aymanalhattami/filament-date-scopes-filter/compare/2.0.1...2.0.2
+
 ## 2.0.1 - 2026-05-25
 
 ### What's Changed
