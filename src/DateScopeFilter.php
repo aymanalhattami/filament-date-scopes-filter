@@ -2,6 +2,7 @@
 
 namespace AymanAlhattami\FilamentDateScopesFilter;
 
+use Closure;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
